@@ -23,7 +23,7 @@
   "body"
  ],
  "min_brightness": 28,
- "max_per_clip": 4,
+ "max_per_clip": 2,
  "exclude_clips": [
   "7648219913668136214",
   "7568189245597191437",

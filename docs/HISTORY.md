@@ -89,7 +89,7 @@ See README.md for commands. Key pieces:
 - `tool/index_shots.py`, `tool/clip_embed.py`, `tool/clip_search.py`: shot index and search by words. Indexing 25 clips takes about 5 minutes on CPU.
 - `edits/work_holygrail.json`: the hand-made Work x Batman edit the artist approved (brat white lyrics). `edits/work_holygrail_batman.auto.json`: the auto version's config.
 
-Known issues: some sources contain glitch-effect frames the filters can't detect, so skim renders before posting; CLIP handles concrete queries ("batmobile through fire") much better than abstract ones ("chaos").
+Known issues: the assembler drops captioned frames (CLIP "text on screen" filter) and off-character shots, but some sources contain glitch-effect frames the filters can't detect, so skim renders before posting; CLIP handles concrete queries ("batmobile through fire") much better than abstract ones ("chaos").
 
 ## Next steps
 

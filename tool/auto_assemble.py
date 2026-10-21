@@ -75,6 +75,9 @@ class Picker:
         self.max_per_clip = cfg.get("max_per_clip", 4)
         self.rng, self.used, self.per_clip, self.last = rng, set(), {}, None
         self.cache = {}
+        # burned-in captions and title cards: drop the shots that look most like text on screen
+        t = self.sims("a frame with large text captions and subtitles on screen")
+        self.ok &= t <= np.percentile(t, 100 - cfg.get("caption_cut_percent", 12))
         if cfg.get("character"):
             # drop the shots that look least like the character (other heroes, title cards, filler)
             c = self.sims(cfg["character"])
