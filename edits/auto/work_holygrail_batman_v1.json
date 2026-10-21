@@ -7,43 +7,50 @@
  "slots": [
   {
    "at": 110.62,
-   "clip": "7688751152925609237",
-   "from": 24.9,
+   "clip": "7690000292670098701",
+   "from": 7.5,
    "fx": [],
    "note": "the bat signal shining on clouds in the night sky"
   },
   {
    "at": 112.338,
-   "clip": "7690000292670098701",
-   "from": 4.5,
+   "clip": "7674037075674516767",
+   "from": 9.92,
    "fx": [],
    "note": "the bat signal shining on clouds in the night sky"
   },
   {
    "at": 112.756,
-   "clip": "7364234742243364103",
-   "from": 27.2,
+   "clip": "7690000292670098701",
+   "from": 6.37,
    "fx": [],
    "note": "the bat signal shining on clouds in the night sky"
   },
   {
    "at": 113.615,
-   "clip": "7686576207281835296",
-   "from": 49.03,
+   "clip": "7571978128659156245",
+   "from": 67.7,
+   "fx": [],
+   "note": "batman standing in the dark shadows, menacing"
+  },
+  {
+   "at": 114.474,
+   "clip": "7626200523594599711",
+   "from": 6.7,
    "fx": [],
    "note": "batman on a rooftop overlooking gotham city at night"
   },
   {
-   "at": 115.31,
-   "clip": "7687372893256420626",
-   "from": 26.7,
+   "at": 116.169,
+   "clip": "7696666507195010324",
+   "from": 49.18,
    "fx": [],
-   "note": "batman on a rooftop overlooking gotham city at night"
+   "note": "close up of the joker's face with clown makeup"
   },
   {
    "at": 116.611,
    "clip": "7364234742243364103",
-   "from": 30.07,
+   "from": 15.53,
    "fx": [
     "punch",
     "shake"
@@ -51,51 +58,58 @@
    "note": "batmobile car bursting through fire and explosion"
   },
   {
-   "at": 117.47,
-   "clip": "7592467109091740942",
-   "from": 9.77,
-   "fx": [],
-   "note": "batman fighting thugs"
-  },
-  {
-   "at": 117.888,
+   "at": 117.029,
    "clip": "7687372893256420626",
    "from": 0.0,
    "fx": [],
    "note": "batman arkham knight video game"
   },
   {
-   "at": 118.329,
+   "at": 117.47,
    "clip": "7592467109091740942",
    "from": 11.32,
    "fx": [],
    "note": "batman fighting thugs"
   },
   {
-   "at": 118.747,
-   "clip": "7383827546892193066",
-   "from": 46.48,
+   "at": 117.888,
+   "clip": "7571978128659156245",
+   "from": 61.07,
    "fx": [],
    "note": "batman walking toward the camera"
   },
   {
-   "at": 119.188,
-   "clip": "7364234742243364103",
-   "from": 15.0,
+   "at": 118.329,
+   "clip": "7688751152925609237",
+   "from": 61.5,
    "fx": [],
    "note": "the batmobile driving fast at night"
   },
   {
-   "at": 119.606,
+   "at": 118.747,
    "clip": "7571978128659156245",
-   "from": 54.93,
+   "from": 60.07,
    "fx": [],
    "note": "close up of batman's mask and cowl"
   },
   {
+   "at": 119.188,
+   "clip": "7592467109091740942",
+   "from": 0.0,
+   "fx": [],
+   "note": "batman fighting thugs"
+  },
+  {
+   "at": 119.606,
+   "clip": "7571978128659156245",
+   "from": 69.27,
+   "fx": [],
+   "note": "batman fighting thugs"
+  },
+  {
    "at": 120.047,
    "clip": "7383827546892193066",
-   "from": 49.07,
+   "from": 19.73,
    "fx": [
     "punch"
    ],
@@ -103,8 +117,8 @@
   },
   {
    "at": 120.906,
-   "clip": "7571978128659156245",
-   "from": 61.07,
+   "clip": "7686576207281835296",
+   "from": 46.5,
    "fx": [
     "punch"
    ],
@@ -112,22 +126,22 @@
   },
   {
    "at": 121.765,
-   "clip": "7592467109091740942",
-   "from": 1.07,
-   "fx": [],
-   "note": "batman fighting thugs"
-  },
-  {
-   "at": 122.207,
-   "clip": "7687372893256420626",
-   "from": 1.37,
+   "clip": "7688806761578417409",
+   "from": 25.0,
    "fx": [],
    "note": "batman arkham knight video game"
   },
   {
+   "at": 122.207,
+   "clip": "7613483527769787679",
+   "from": 24.52,
+   "fx": [],
+   "note": "the batmobile driving fast at night"
+  },
+  {
    "at": 122.625,
-   "clip": "7571978128659156245",
-   "from": 61.57,
+   "clip": "7626200523594599711",
+   "from": 18.77,
    "fx": [
     "punch"
    ],
@@ -135,36 +149,36 @@
   },
   {
    "at": 123.46,
-   "clip": "7592467109091740942",
-   "from": 39.7,
+   "clip": "7364234742243364103",
+   "from": 15.0,
    "fx": [],
-   "note": "batman fighting thugs"
+   "note": "the batmobile driving fast at night"
   },
   {
    "at": 123.878,
-   "clip": "7383827546892193066",
-   "from": 54.42,
+   "clip": "7613483527769787679",
+   "from": 20.48,
    "fx": [],
-   "note": "batman jumping into action"
+   "note": "the batmobile driving fast at night"
   },
   {
    "at": 124.32,
-   "clip": "7364234742243364103",
-   "from": 15.53,
+   "clip": "7383827546892193066",
+   "from": 15.22,
    "fx": [],
-   "note": "the batmobile driving fast at night"
+   "note": "batman walking toward the camera"
   },
   {
    "at": 124.738,
-   "clip": "7571978128659156245",
-   "from": 69.77,
+   "clip": "7687372893256420626",
+   "from": 0.57,
    "fx": [],
-   "note": "the batmobile driving fast at night"
+   "note": "batman arkham knight video game"
   },
   {
    "at": 125.156,
    "clip": "7463497666777910561",
-   "from": 136.07,
+   "from": 59.33,
    "fx": [
     "punch"
    ],
@@ -172,15 +186,15 @@
   },
   {
    "at": 126.038,
-   "clip": "7626200523594599711",
-   "from": 18.77,
+   "clip": "7686576207281835296",
+   "from": 52.53,
    "fx": [],
-   "note": "batman fighting thugs"
+   "note": "close up of batman's mask and cowl"
   },
   {
    "at": 126.479,
-   "clip": "7676836479259118856",
-   "from": 35.89,
+   "clip": "7592467109091740942",
+   "from": 41.59,
    "fx": [
     "punch"
    ],
@@ -188,29 +202,29 @@
   },
   {
    "at": 127.338,
-   "clip": "7686576207281835296",
-   "from": 46.5,
-   "fx": [],
-   "note": "close up of batman's mask and cowl"
-  },
-  {
-   "at": 127.756,
    "clip": "7383827546892193066",
    "from": 23.15,
    "fx": [],
    "note": "batman walking toward the camera"
   },
   {
-   "at": 128.197,
-   "clip": "7626200523594599711",
-   "from": 6.7,
+   "at": 127.756,
+   "clip": "7686576207281835296",
+   "from": 49.03,
    "fx": [],
    "note": "batman standing in the rain"
   },
   {
-   "at": 128.615,
+   "at": 128.197,
    "clip": "7687372893256420626",
-   "from": 17.13,
+   "from": 1.37,
+   "fx": [],
+   "note": "batman arkham knight video game"
+  },
+  {
+   "at": 128.615,
+   "clip": "7592467109091740942",
+   "from": 1.07,
    "fx": [
     "punch"
    ],
@@ -218,15 +232,15 @@
   },
   {
    "at": 129.474,
-   "clip": "7688806761578417409",
-   "from": 25.0,
+   "clip": "7613483527769787679",
+   "from": 13.18,
    "fx": [],
-   "note": "batman arkham knight video game"
+   "note": "the batmobile driving fast at night"
   },
   {
    "at": 129.892,
    "clip": "7696666507195010324",
-   "from": 69.4,
+   "from": 83.41,
    "fx": [
     "punch"
    ],

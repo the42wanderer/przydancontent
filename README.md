@@ -19,12 +19,17 @@ npx playwright install chromium
 
 Songs live in `songs/`: `work.mp3`, `work_lyrics.txt` (typed lyrics), `work_whisper_words.json` (word timings), `work_timed_lines.json` (line start times). Downloaded clips (`data/`) and renders (`out/`) are git-ignored.
 
-## Re-render the Work x Batman edit
+## Work x Batman
 
 ```powershell
-py tool/fetch_sources.py edits/sources_batman.json data/clips
-py tool/render_edit.py edits/work_holygrail.json out/work_holygrail.mp4
+py tool/fetch_sources.py edits/sources_batman.json data/clips      # clips (YouTube ones need a home connection)
+py tool/render_edit.py edits/work_holygrail.json out/work_holygrail.mp4   # the hand-cut edit
+py tool/index_shots.py data/clips data/index                       # shot index (a few minutes)
+py tool/clip_embed.py data/index
+py tool/auto_assemble.py edits/work_holygrail_batman.auto.json --render   # 3 automatic variations
 ```
+
+Background, decisions and next steps: `docs/HISTORY.md`.
 
 ## Pipeline
 
@@ -37,6 +42,8 @@ py tool/render_edit.py edits/work_holygrail.json out/work_holygrail.mp4
 | Search | `tool/clip_embed.py data/index`, then `tool/clip_search.py data/index queries.json` | CLIP index; find shots by words, e.g. "batmobile through fire" |
 | Song | `tool/song_energy.py song.mp3` | Tempo, energy per second, drops, best 10/15/20 s windows |
 | Lyrics | `tool/lyric_words.py whisper.json lyrics.txt START END` | Word timings from the real lyrics aligned to whisper output |
+| Transcribe | `tool/transcribe.py songs/x.mp3 songs/x_whisper_words.json` | Word timestamps for a new song (align with `lyric_words.py`) |
 | Render | `tool/render_edit.py TIMELINE.json OUT.mp4` | Cuts, punch/shake, flashes, brat-style lyrics, audio |
+| Auto edit | `tool/auto_assemble.py edits/X.auto.json --render` | Beat grid + drop, lyric anchors, picks shots from the index, writes and renders N variations |
 
 Timeline format is documented at the top of `tool/render_edit.py`; `edits/work_holygrail.json` is a full example.

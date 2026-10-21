@@ -7,7 +7,7 @@ song window, lays out slots (one per bar before the drop, one per beat after it,
 anchor words), and fills each slot with a shot from the CLIP index that matches the slot's query.
 Writes one timeline per variation to edits/auto/<name>_vN.json; --render also renders them to out/.
 
-Shot rules: no shot used twice, at most max_per_clip uses of one source clip, never the same clip
+Shot rules: no shot (or another piece of the same shot) used twice, at most max_per_clip uses of one source clip, never the same clip
 twice in a row, dark shots skipped, high-motion shots preferred after the drop.
 """
 import json
@@ -70,10 +70,15 @@ class Picker:
         self.torch = torch
         self.motion = np.array([s["motion"] for s in self.shots])
         self.ok = np.array([s["vid"] not in set(cfg.get("exclude_clips", [])) and s["dur"] >= 0.3
-                            and s["bright"] >= cfg.get("min_brightness", 28) for s in self.shots])
+                            and cfg.get("min_brightness", 28) <= s["bright"] <= cfg.get("max_brightness", 140)
+                            for s in self.shots])
         self.max_per_clip = cfg.get("max_per_clip", 4)
         self.rng, self.used, self.per_clip, self.last = rng, set(), {}, None
         self.cache = {}
+        if cfg.get("character"):
+            # drop the shots that look least like the character (other heroes, title cards, filler)
+            c = self.sims(cfg["character"])
+            self.ok &= c >= np.percentile(c, cfg.get("character_cut_percentile", 35))
 
     def sims(self, query):
         if query not in self.cache:
@@ -88,13 +93,14 @@ class Picker:
         if after_drop:
             score += 0.002 * np.minimum(self.motion, 30)
         for i, s in enumerate(self.shots):
-            if (not self.ok[i] or s["id"] in self.used or s["vid"] == self.last
+            if (not self.ok[i] or (s["vid"], s.get("shot")) in self.used or s["vid"] == self.last
                     or self.per_clip.get(s["vid"], 0) >= self.max_per_clip):
                 score[i] = -9
         top = np.argsort(-score)[:4]
         i = int(self.rng.choices(list(top), weights=[4, 3, 2, 1][:len(top)])[0])
         s = self.shots[i]
-        self.used.add(s["id"])
+        # pieces of one long shot look alike, so the whole original shot counts as used
+        self.used.add((s["vid"], s.get("shot")))
         self.per_clip[s["vid"]] = self.per_clip.get(s["vid"], 0) + 1
         self.last = s["vid"]
         return s
@@ -111,13 +117,16 @@ def assemble(cfg, rel, beats, drop, words, variation):
     for w in words:
         q = anchors.get(w["word"].lower())
         if q:
-            j = int(np.argmin([abs(b - w["at"]) for b in grid]))
-            hits.setdefault(j, q)
+            # nearest free beat; the drop beat belongs to the drop shot
+            for j in sorted(range(len(grid) - 1), key=lambda j: abs(grid[j] - w["at"]))[:3]:
+                if j != di and j not in hits and j - 1 not in hits:
+                    hits[j] = q
+                    break
     starts, i = [], 0
     while i < len(grid) - 1:
         starts.append(i)
         if i in hits:
-            i += 2
+            i = i + 2 if not i < di < i + 2 else di
         elif i < di:
             i = min(i + 4, di) if not any(i < h < min(i + 4, di) for h in hits) else min(h for h in hits if h > i)
         else:
