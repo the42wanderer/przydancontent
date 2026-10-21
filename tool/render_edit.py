@@ -76,9 +76,11 @@ def main(timeline_path, out_path):
         post.append(f"drawbox=x=0:y=0:w=iw:h=ih:color=white@0.35:t=fill:enable='between(t,{a + 0.067:.3f},{a + 0.13:.3f})'")
     for tx in tl.get("texts", []):
         a, b = tx["from"] - t0, tx["to"] - t0
-        txt = tx["text"].replace(":", r"\:").replace("'", r"\'")
+        # a straight quote cannot be escaped inside ffmpeg's quoted option, so use a typographic one
+        txt = tx["text"].replace(":", r"\:").replace("'", "’")
         post.append(f"drawtext=fontfile={FONT}:text='{txt}':fontsize={tx.get('size', 150)}:fontcolor=white"
-                    f":borderw=6:bordercolor=black@0.6:x=(w-text_w)/2:y=(h-text_h)/2:enable='between(t,{a:.3f},{b:.3f})'")
+                    f":borderw=6:bordercolor=black@0.6:x=(w-text_w)/2:y={tx.get('y', '(h-text_h)/2')}"
+                    f":enable='between(t,{a:.3f},{b:.3f})'")
     vf = ",".join(post) or "null"
     run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", joined, "-ss", str(t0), "-t", f"{tl['end'] - t0:.3f}", "-i", rel(tl["audio"]),
          "-vf", vf, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
