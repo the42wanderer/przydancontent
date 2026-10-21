@@ -22,6 +22,10 @@ import tempfile
 
 W, H, FPS = 1080, 1920, 30
 FONT = "/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf"
+# "text_style": "brat" - Charli XCX brat look: Arial-metric font squeezed narrow, lowercase, slight blur.
+# "text_bg" / "text_fg" set the block and letter colours (brat cover is 0x8ACE00 on black).
+BRAT_FONT = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
+BRAT_SQUEEZE = 0.8
 GRADE = "eq=contrast=1.1:brightness=0.03:saturation=1.15:gamma=1.2,colorbalance=rs=0.04:bs=0.05:rh=0.05:bh=-0.03"
 
 
@@ -74,16 +78,38 @@ def main(timeline_path, out_path):
         a = t - t0
         post.append(f"drawbox=x=0:y=0:w=iw:h=ih:color=white@0.85:t=fill:enable='between(t,{a:.3f},{a + 0.067:.3f})'")
         post.append(f"drawbox=x=0:y=0:w=iw:h=ih:color=white@0.35:t=fill:enable='between(t,{a + 0.067:.3f},{a + 0.13:.3f})'")
+    dur = tl["end"] - t0
+    brat = tl.get("text_style") == "brat"
+    bg, fg = tl.get("text_bg"), tl.get("text_fg", "white")
+    texts = []
     for tx in tl.get("texts", []):
         a, b = tx["from"] - t0, tx["to"] - t0
+        on = f"enable='between(t,{a:.3f},{b:.3f})'"
         # a straight quote cannot be escaped inside ffmpeg's quoted option, so use a typographic one
         txt = tx["text"].replace(":", r"\:").replace("'", "’")
-        post.append(f"drawtext=fontfile={FONT}:text='{txt}':fontsize={tx.get('size', 150)}:fontcolor=white"
-                    f":borderw=6:bordercolor=black@0.6:x=(w-text_w)/2:y={tx.get('y', '(h-text_h)/2')}"
-                    f":enable='between(t,{a:.3f},{b:.3f})'")
-    vf = ",".join(post) or "null"
-    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", joined, "-ss", str(t0), "-t", f"{tl['end'] - t0:.3f}", "-i", rel(tl["audio"]),
-         "-vf", vf, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+        y = tx.get("y", "(h-text_h)/2")
+        if not brat:
+            post.append(f"drawtext=fontfile={FONT}:text='{txt}':fontsize={tx.get('size', 150)}:fontcolor=white"
+                        f":borderw=6:bordercolor=black@0.6:x=(w-text_w)/2:y={y}:{on}")
+        elif tx.get("card") and bg:
+            # brat cover: full-screen colour block, lowercase text in the middle
+            texts.append(f"drawbox=x=0:y=0:w=iw:h=ih:color={bg}:t=fill:replace=1:{on}")
+            texts.append(f"drawtext=fontfile={BRAT_FONT}:text='{txt.lower()}':fontsize={tx.get('size', 150) * 1.3:.0f}"
+                         f":fontcolor={fg}:x=(w-text_w)/2:y=(h-text_h)/2:{on}")
+        else:
+            # no text_bg: bare letters with a soft shadow so they stay readable on bright footage
+            look = f"box=1:boxcolor={bg}:boxborderw=22" if bg else "shadowcolor=black@0.55:shadowx=0:shadowy=5"
+            texts.append(f"drawtext=fontfile={BRAT_FONT}:text='{txt.lower()}':fontsize={tx.get('size', 150)}"
+                         f":fontcolor={fg}:{look}:x=(w-text_w)/2:y={y}:{on}")
+    graph = f"[0:v]{','.join(post) or 'null'}[base]"
+    if texts:
+        # draw on a wider transparent layer, squeeze it to width (narrow brat letterforms), soften slightly
+        graph += (f";color=c=black@0.0:s={int(W / BRAT_SQUEEZE)}x{H}:r={FPS}:d={dur:.3f},format=rgba,"
+                  f"{','.join(texts)},gblur=sigma=1.4,scale={W}:{H}[txt];[base][txt]overlay=0:0[v]")
+    else:
+        graph += ";[base]null[v]"
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", joined, "-ss", str(t0), "-t", f"{dur:.3f}", "-i", rel(tl["audio"]),
+         "-filter_complex", graph, "-map", "[v]", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
          "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out_path])
     print("wrote", out_path)
 
