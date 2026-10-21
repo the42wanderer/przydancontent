@@ -9,7 +9,7 @@ for f in sorted(glob.glob(sys.argv[1]+'/*.mp4')):
     fr=np.frombuffer(raw,np.uint8)[:(len(raw)//(w*h))*w*h].reshape(-1,h,w).astype(np.float32)
     sd=fr.std(0); m=sd>18
     rows=np.where(m.mean(1)>0.35)[0]; cols=np.where(m.mean(0)>0.35)[0]
-    if len(rows)<5 or len(cols)<5: res[v]=[0,0,W,H]; continue
+    if len(rows)<5 or len(cols)<5: res[v]=[0,0,1,1]; continue
     # largest contiguous run of rows
     def run(a):
         best=(a[0],a[0]);s=a[0]
@@ -22,5 +22,5 @@ for f in sorted(glob.glob(sys.argv[1]+'/*.mp4')):
     r0,r1=run(rows); c0,c1=run(cols)
     pad=2
     box=[max(0,(c0+pad)*4),max(0,(r0+pad)*4),min(W,(c1-pad)*4),min(H,(r1-pad)*4)]
-    box=[int(x) for x in box]; res[v]=box; print(v,W,H,'->',box,'size',box[2]-box[0],box[3]-box[1])
+    box=[round(box[0]/W,4),round(box[1]/H,4),round(box[2]/W,4),round(box[3]/H,4)]; res[v]=box; print(v,W,H,'->',box,'size',box[2]-box[0],box[3]-box[1])
 json.dump(res,open(sys.argv[2],'w'))

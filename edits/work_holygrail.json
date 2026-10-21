@@ -1,9 +1,9 @@
 {
- "audio": "/root/.claude/uploads/65728f2f-b985-50f2-86e8-8935d09fb008/ffd7e585-Work.mp3",
+ "audio": "../songs/work.mp3",
  "start": 110.62,
  "end": 130.334,
- "sources": "/tmp/claude-0/-home-user-przydancontent/65728f2f-b985-50f2-86e8-8935d09fb008/scratchpad/bat/tt",
- "boxes": "/tmp/claude-0/-home-user-przydancontent/65728f2f-b985-50f2-86e8-8935d09fb008/scratchpad/bat/boxes.json",
+ "sources": "../data/clips",
+ "boxes": "boxes_batman.json",
  "slots": [
   {
    "at": 110.62,

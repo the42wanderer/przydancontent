@@ -21,10 +21,22 @@ import sys
 import tempfile
 
 W, H, FPS = 1080, 1920, 30
-FONT = "/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf"
+
+
+def find_font(*candidates):
+    for c in candidates:
+        if os.path.exists(c):
+            # ffmpeg filter options use ":" as a separator, so a Windows drive letter needs escaping
+            return c.replace("\\", "/").replace(":", r"\:")
+    sys.exit(f"none of these fonts exist: {candidates}")
+
+
+FONT = find_font("C:/Windows/Fonts/arialbd.ttf", "/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf",
+                 "/System/Library/Fonts/Supplemental/Arial Bold.ttf")
 # "text_style": "brat" - Charli XCX brat look: Arial-metric font squeezed narrow, lowercase, slight blur.
 # "text_bg" / "text_fg" set the block and letter colours (brat cover is 0x8ACE00 on black).
-BRAT_FONT = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
+BRAT_FONT = find_font("C:/Windows/Fonts/arial.ttf", "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+                      "/System/Library/Fonts/Supplemental/Arial.ttf")
 BRAT_SQUEEZE = 0.8
 GRADE = "eq=contrast=1.1:brightness=0.03:saturation=1.15:gamma=1.2,colorbalance=rs=0.04:bs=0.05:rh=0.05:bh=-0.03"
 
@@ -33,6 +45,24 @@ def run(cmd):
     p = subprocess.run(cmd, capture_output=True, text=True)
     if p.returncode:
         sys.exit(p.stderr[-2000:])
+
+
+def frame_size(path):
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
+                          "-of", "csv=p=0", path], capture_output=True, text=True).stdout
+    w, h = out.strip().split(",")[:2]
+    return int(w), int(h)
+
+
+def pixel_box(box, src):
+    """Boxes are [x0, y0, x1, y1] as fractions of the frame (or pixels); a missing box means the whole frame."""
+    w, h = frame_size(src)
+    if not box:
+        return [0, 0, w, h]
+    if max(box) <= 1:
+        box = [box[0] * w, box[1] * h, box[2] * w, box[3] * h]
+    x0, y0, x1, y1 = (int(v) // 2 * 2 for v in box)
+    return [x0, y0, x1, y1]
 
 
 def segment_filter(box, fx, dur):
@@ -64,11 +94,11 @@ def main(timeline_path, out_path):
         part = os.path.join(tmp, f"{i:03d}.mp4")
         src = os.path.join(rel(tl["sources"]), s["clip"] + ".mp4")
         run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", str(s["from"]), "-i", src, "-t", f"{dur + 0.2:.3f}",
-             "-vf", segment_filter(boxes[s["clip"]], s.get("fx", []), dur), "-frames:v", str(frames),
+             "-vf", segment_filter(pixel_box(boxes.get(s["clip"]), src), s.get("fx", []), dur), "-frames:v", str(frames),
              "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", part])
         parts.append(part)
     lst = os.path.join(tmp, "list.txt")
-    open(lst, "w").write("".join(f"file '{p}'\n" for p in parts))
+    open(lst, "w").write("".join(f"file '{p.replace(os.sep, '/')}'\n" for p in parts))
     joined = os.path.join(tmp, "joined.mp4")
     run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", joined])
 

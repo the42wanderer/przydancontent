@@ -1,15 +1,42 @@
 # przydancontent
 
-Tools for making beat-synced "hard edits" for PRZYDAN's songs. See the marketing guide for the strategy.
+Tools for making beat-synced "hard edits" for PRZYDAN's songs: find what's trending, pull footage, index it, cut it on the beat, render 1080x1920 MP4s.
 
-Pipeline (prototype):
+Run it on your own computer: YouTube blocks cloud servers, so YouTube scenepacks only download from a home connection.
 
-1. `tool/scrape_tags.mjs` – pull top TikTok posts for hashtags (views, saves, sounds) to see what footage is trending.
-2. `tool/tiktok_download.py` – download source clips (scenepacks / clips-for-edits posts).
-3. `tool/content_boxes.py` – find each clip's footage area (drops static captions and borders).
-4. `tool/index_shots.py` – split clips into shots, score motion and brightness, save thumbnails.
-5. `tool/clip_embed.py` + `tool/clip_search.py` – CLIP index; search shots by words ("batmobile through fire").
-6. `tool/song_energy.py`, `tool/align_lyrics.py` – drops, beat grid, lyric timings for a song.
-7. `tool/render_edit.py` – render a 1080x1920 edit from a timeline JSON (cuts, punch/shake, flashes, text, audio).
+## Setup (Windows, once)
 
-Example timeline: `edits/work_holygrail.json` (Work x Batman). Its source and audio paths point at the session scratch space; point them at your own copies to re-render.
+```powershell
+winget install Python.Python.3.12 Gyan.FFmpeg OpenJS.NodeJS.LTS Git.Git
+# open a new terminal so the new tools are on PATH
+git clone https://github.com/the42wanderer/przydancontent
+cd przydancontent
+git checkout claude/beautiful-hamilton-i7xc4q
+py -m pip install -r requirements.txt
+npm install
+npx playwright install chromium
+```
+
+Put song audio and lyrics in `songs/` (e.g. `songs/work.mp3`, `songs/work_lyrics.txt`). `songs/`, downloaded clips (`data/`) and renders (`out/`) are git-ignored, because this repo is public.
+
+## Re-render the Work x Batman edit
+
+```powershell
+py tool/fetch_sources.py edits/sources_batman.json data/clips
+py tool/render_edit.py edits/work_holygrail.json out/work_holygrail.mp4
+```
+
+## Pipeline
+
+| Step | Script | What it does |
+| --- | --- | --- |
+| Trends | `node tool/scrape_tags.mjs out.json batmanedit thebatman` | Top TikTok posts per hashtag: plays, saves, sounds, captions |
+| Footage | `tool/fetch_sources.py MANIFEST data/clips` | Downloads every clip in a manifest (YouTube, TikTok) as `<id>.mp4` |
+| Crop | `tool/content_boxes.py data/clips edits/boxes_X.json` | Finds each clip's footage area, dropping burned-in captions and borders |
+| Index | `tool/index_shots.py data/clips data/index` | Splits clips into shots; motion, brightness, thumbnails |
+| Search | `tool/clip_embed.py data/index`, then `tool/clip_search.py data/index queries.json` | CLIP index; find shots by words, e.g. "batmobile through fire" |
+| Song | `tool/song_energy.py song.mp3` | Tempo, energy per second, drops, best 10/15/20 s windows |
+| Lyrics | `tool/lyric_words.py whisper.json lyrics.txt START END` | Word timings from the real lyrics aligned to whisper output |
+| Render | `tool/render_edit.py TIMELINE.json OUT.mp4` | Cuts, punch/shake, flashes, brat-style lyrics, audio |
+
+Timeline format is documented at the top of `tool/render_edit.py`; `edits/work_holygrail.json` is a full example.
