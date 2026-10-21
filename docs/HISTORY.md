@@ -91,6 +91,11 @@ See README.md for commands. Key pieces:
 
 Known issues: the assembler drops captioned frames (CLIP "text on screen" filter) and off-character shots, but some sources contain glitch-effect frames the filters can't detect, so skim renders before posting; CLIP handles concrete queries ("batmobile through fire") much better than abstract ones ("chaos").
 
+## Run log
+
+- 2026-10-22, on the artist's Mac: all 12 YouTube scenepacks downloaded fine from home (36 of 37 sources; TikTok 7411719521494404398 fails but is excluded anyway). Index rebuilt: 2,524 shots. Auto Batman edits re-rendered into `out/`; v2 was the cleanest. `RajlSpO16a0` (Evolution of the Bat-signal) is excluded because it mixes 4:3 and widescreen and its 1940s title card leaks text into the crop.
+- Mac setup: `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt imageio-ffmpeg`. Homebrew's ffmpeg has no `drawtext` (no libfreetype), so link imageio-ffmpeg's binary as `.venv/bin/ffmpeg` and run with `PATH=$PWD/.venv/bin:$PATH`.
+
 ## Next steps
 
 1. On the PC: fetch the YouTube scenepacks, rebuild the index (`index_shots.py`, `clip_embed.py`), re-run the auto-assembler for 4K-sourced Batman edits.

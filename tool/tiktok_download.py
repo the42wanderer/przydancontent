@@ -15,11 +15,11 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like 
 def download(url, path):
     """url: full TikTok video URL. The video link only works with the cookies the page set."""
     op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
-    html = op.open(urllib.request.Request(url, headers={"User-Agent": UA})).read().decode()
+    html = op.open(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=60).read().decode()
     data = json.loads(re.search(r'id="__UNIVERSAL_DATA_FOR_REHYDRATION__"[^>]*>(.*?)</script>', html, re.S).group(1))
     video = data["__DEFAULT_SCOPE__"]["webapp.video-detail"]["itemInfo"]["itemStruct"]["video"]
     body = op.open(urllib.request.Request(video["playAddr"], headers={"User-Agent": UA,
-                                                                      "Referer": "https://www.tiktok.com/"})).read()
+                                                                      "Referer": "https://www.tiktok.com/"}), timeout=60).read()
     open(path, "wb").write(body)
     return len(body)
 

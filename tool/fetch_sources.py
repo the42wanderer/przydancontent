@@ -29,6 +29,7 @@ for item in json.load(open(manifest)):
         "quiet": True,
         "no_warnings": True,
         "sleep_interval": 3,
+        "socket_timeout": 60,
     }
     try:
         if "tiktok.com" in item["url"]:
