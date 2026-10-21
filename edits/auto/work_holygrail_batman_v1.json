@@ -1,0 +1,677 @@
+{
+ "audio": "../../songs/work.mp3",
+ "start": 110.62,
+ "end": 130.334,
+ "sources": "../../data/clips",
+ "boxes": "../boxes_batman.json",
+ "slots": [
+  {
+   "at": 110.62,
+   "clip": "7688751152925609237",
+   "from": 24.9,
+   "fx": [],
+   "note": "the bat signal shining on clouds in the night sky"
+  },
+  {
+   "at": 112.338,
+   "clip": "7690000292670098701",
+   "from": 4.5,
+   "fx": [],
+   "note": "the bat signal shining on clouds in the night sky"
+  },
+  {
+   "at": 112.756,
+   "clip": "7364234742243364103",
+   "from": 27.2,
+   "fx": [],
+   "note": "the bat signal shining on clouds in the night sky"
+  },
+  {
+   "at": 113.615,
+   "clip": "7686576207281835296",
+   "from": 49.03,
+   "fx": [],
+   "note": "batman on a rooftop overlooking gotham city at night"
+  },
+  {
+   "at": 115.31,
+   "clip": "7687372893256420626",
+   "from": 26.7,
+   "fx": [],
+   "note": "batman on a rooftop overlooking gotham city at night"
+  },
+  {
+   "at": 116.611,
+   "clip": "7364234742243364103",
+   "from": 30.07,
+   "fx": [
+    "punch",
+    "shake"
+   ],
+   "note": "batmobile car bursting through fire and explosion"
+  },
+  {
+   "at": 117.47,
+   "clip": "7592467109091740942",
+   "from": 9.77,
+   "fx": [],
+   "note": "batman fighting thugs"
+  },
+  {
+   "at": 117.888,
+   "clip": "7687372893256420626",
+   "from": 0.0,
+   "fx": [],
+   "note": "batman arkham knight video game"
+  },
+  {
+   "at": 118.329,
+   "clip": "7592467109091740942",
+   "from": 11.32,
+   "fx": [],
+   "note": "batman fighting thugs"
+  },
+  {
+   "at": 118.747,
+   "clip": "7383827546892193066",
+   "from": 46.48,
+   "fx": [],
+   "note": "batman walking toward the camera"
+  },
+  {
+   "at": 119.188,
+   "clip": "7364234742243364103",
+   "from": 15.0,
+   "fx": [],
+   "note": "the batmobile driving fast at night"
+  },
+  {
+   "at": 119.606,
+   "clip": "7571978128659156245",
+   "from": 54.93,
+   "fx": [],
+   "note": "close up of batman's mask and cowl"
+  },
+  {
+   "at": 120.047,
+   "clip": "7383827546892193066",
+   "from": 49.07,
+   "fx": [
+    "punch"
+   ],
+   "note": "bruce wayne wearing a black suit"
+  },
+  {
+   "at": 120.906,
+   "clip": "7571978128659156245",
+   "from": 61.07,
+   "fx": [
+    "punch"
+   ],
+   "note": "close up of batman's mask and cowl"
+  },
+  {
+   "at": 121.765,
+   "clip": "7592467109091740942",
+   "from": 1.07,
+   "fx": [],
+   "note": "batman fighting thugs"
+  },
+  {
+   "at": 122.207,
+   "clip": "7687372893256420626",
+   "from": 1.37,
+   "fx": [],
+   "note": "batman arkham knight video game"
+  },
+  {
+   "at": 122.625,
+   "clip": "7571978128659156245",
+   "from": 61.57,
+   "fx": [
+    "punch"
+   ],
+   "note": "batman punching a man"
+  },
+  {
+   "at": 123.46,
+   "clip": "7592467109091740942",
+   "from": 39.7,
+   "fx": [],
+   "note": "batman fighting thugs"
+  },
+  {
+   "at": 123.878,
+   "clip": "7383827546892193066",
+   "from": 54.42,
+   "fx": [],
+   "note": "batman jumping into action"
+  },
+  {
+   "at": 124.32,
+   "clip": "7364234742243364103",
+   "from": 15.53,
+   "fx": [],
+   "note": "the batmobile driving fast at night"
+  },
+  {
+   "at": 124.738,
+   "clip": "7571978128659156245",
+   "from": 69.77,
+   "fx": [],
+   "note": "the batmobile driving fast at night"
+  },
+  {
+   "at": 125.156,
+   "clip": "7463497666777910561",
+   "from": 136.07,
+   "fx": [
+    "punch"
+   ],
+   "note": "lego batman minifigure"
+  },
+  {
+   "at": 126.038,
+   "clip": "7626200523594599711",
+   "from": 18.77,
+   "fx": [],
+   "note": "batman fighting thugs"
+  },
+  {
+   "at": 126.479,
+   "clip": "7676836479259118856",
+   "from": 35.89,
+   "fx": [
+    "punch"
+   ],
+   "note": "batman grabbing a criminal"
+  },
+  {
+   "at": 127.338,
+   "clip": "7686576207281835296",
+   "from": 46.5,
+   "fx": [],
+   "note": "close up of batman's mask and cowl"
+  },
+  {
+   "at": 127.756,
+   "clip": "7383827546892193066",
+   "from": 23.15,
+   "fx": [],
+   "note": "batman walking toward the camera"
+  },
+  {
+   "at": 128.197,
+   "clip": "7626200523594599711",
+   "from": 6.7,
+   "fx": [],
+   "note": "batman standing in the rain"
+  },
+  {
+   "at": 128.615,
+   "clip": "7687372893256420626",
+   "from": 17.13,
+   "fx": [
+    "punch"
+   ],
+   "note": "batman gliding with cape spread over the city"
+  },
+  {
+   "at": 129.474,
+   "clip": "7688806761578417409",
+   "from": 25.0,
+   "fx": [],
+   "note": "batman arkham knight video game"
+  },
+  {
+   "at": 129.892,
+   "clip": "7696666507195010324",
+   "from": 69.4,
+   "fx": [
+    "punch"
+   ],
+   "note": "the joker laughing"
+  }
+ ],
+ "flashes": [
+  116.611,
+  117.029,
+  117.47,
+  117.888,
+  118.329,
+  120.047,
+  120.906,
+  121.765,
+  122.625,
+  123.46,
+  125.156,
+  126.479,
+  126.897,
+  128.615,
+  129.892
+ ],
+ "text_style": "brat",
+ "text_fg": "white",
+ "texts": [
+  {
+   "text": "yea",
+   "from": 110.68,
+   "to": 111.14,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "and",
+   "from": 111.14,
+   "to": 111.42,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "everybody",
+   "from": 111.42,
+   "to": 111.7,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "think",
+   "from": 111.7,
+   "to": 111.98,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "that",
+   "from": 111.98,
+   "to": 112.26,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "it's a",
+   "from": 112.26,
+   "to": 112.712,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "fairytale",
+   "from": 112.712,
+   "to": 113.004,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "przydan",
+   "from": 113.004,
+   "to": 113.296,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "made",
+   "from": 113.296,
+   "to": 113.588,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "it",
+   "from": 113.588,
+   "to": 113.88,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "it's my",
+   "from": 113.88,
+   "to": 114.2,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "holy",
+   "from": 114.2,
+   "to": 114.46,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "grail",
+   "from": 114.46,
+   "to": 114.72,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "i don't",
+   "from": 114.72,
+   "to": 115.14,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "wish for",
+   "from": 115.14,
+   "to": 115.46,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "death i",
+   "from": 115.46,
+   "to": 115.76,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "just wish",
+   "from": 115.76,
+   "to": 116.1,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "you go",
+   "from": 116.1,
+   "to": 116.36,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "to",
+   "from": 116.36,
+   "to": 116.5,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "hell",
+   "from": 116.5,
+   "to": 116.737,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "move",
+   "from": 116.737,
+   "to": 116.974,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "your",
+   "from": 116.974,
+   "to": 117.211,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "body",
+   "from": 117.211,
+   "to": 117.449,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "move",
+   "from": 117.449,
+   "to": 117.686,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "your",
+   "from": 117.686,
+   "to": 117.923,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "body",
+   "from": 117.923,
+   "to": 118.16,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "i just",
+   "from": 118.16,
+   "to": 118.54,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "put this",
+   "from": 118.54,
+   "to": 119.0,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "bitch straight",
+   "from": 119.0,
+   "to": 119.55,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "outta",
+   "from": 119.55,
+   "to": 119.9,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "work",
+   "from": 119.9,
+   "to": 120.18,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "no longer",
+   "from": 120.18,
+   "to": 120.5,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "just ya",
+   "from": 120.5,
+   "to": 120.94,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "hobby how'd",
+   "from": 120.94,
+   "to": 121.38,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "you know",
+   "from": 121.38,
+   "to": 121.82,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "that",
+   "from": 121.82,
+   "to": 122.047,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "shit",
+   "from": 122.047,
+   "to": 122.273,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "gon",
+   "from": 122.273,
+   "to": 122.5,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "hurt",
+   "from": 122.5,
+   "to": 122.68,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "cuz i",
+   "from": 122.68,
+   "to": 123.04,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "don't know",
+   "from": 123.04,
+   "to": 123.5,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "that this",
+   "from": 123.5,
+   "to": 123.92,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "ain't",
+   "from": 123.92,
+   "to": 124.18,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "just",
+   "from": 124.18,
+   "to": 124.607,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "your",
+   "from": 124.607,
+   "to": 125.033,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "poppy",
+   "from": 125.033,
+   "to": 125.46,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "and i",
+   "from": 125.46,
+   "to": 125.86,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "caught",
+   "from": 125.86,
+   "to": 126.1,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "that",
+   "from": 126.1,
+   "to": 126.36,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "copy",
+   "from": 126.36,
+   "to": 126.92,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "just before",
+   "from": 126.92,
+   "to": 127.26,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "i",
+   "from": 127.26,
+   "to": 127.56,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "turned it",
+   "from": 127.56,
+   "to": 127.82,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "into",
+   "from": 127.82,
+   "to": 128.16,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "a",
+   "from": 128.16,
+   "to": 128.52,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "bird",
+   "from": 128.52,
+   "to": 129.08,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "and it",
+   "from": 129.08,
+   "to": 129.28,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "got",
+   "from": 129.28,
+   "to": 129.51,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "too",
+   "from": 129.51,
+   "to": 129.74,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "cocky",
+   "from": 129.74,
+   "to": 130.334,
+   "size": 125,
+   "y": "h*0.64"
+  }
+ ]
+}

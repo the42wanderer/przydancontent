@@ -17,7 +17,7 @@ npm install
 npx playwright install chromium
 ```
 
-Put song audio and lyrics in `songs/` (e.g. `songs/work.mp3`, `songs/work_lyrics.txt`). `songs/`, downloaded clips (`data/`) and renders (`out/`) are git-ignored, because this repo is public.
+Songs live in `songs/`: `work.mp3`, `work_lyrics.txt` (typed lyrics), `work_whisper_words.json` (word timings), `work_timed_lines.json` (line start times). Downloaded clips (`data/`) and renders (`out/`) are git-ignored.
 
 ## Re-render the Work x Batman edit
 
