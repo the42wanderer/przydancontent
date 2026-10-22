@@ -9,6 +9,8 @@ Writes one timeline per variation to edits/auto/<name>_vN.json; --render also re
 
 "dialogue" (optional): {"clip", "audio", "words", "from", "to"} opens the edit with that film scene
 (source seconds from..to, its own audio and subtitles) so it ends right on the drop; the montage starts there.
+A list of such parts plays them back to back (e.g. several people talking), the last one ending on the drop.
+A part's "label" shows who is talking at the top of the frame.
 An anchor can name an exact shot instead of a query: "bird": {"clip": "<id>", "from": 43.6, "beats": 3}
 ("beats" = how long it holds, default 2). "end_at" (song seconds) lets the last shot run past the last beat.
 Optional "shots": [{"from", "box"}] crops each of the scene's own shots on its speaker, and "subs":
@@ -116,22 +118,38 @@ class Picker:
         return s
 
 
-def dialogue_texts(cfg, rel, start, drop):
-    """Subtitles for the scene, on song time: hand-written "subs" if given, else whisper words."""
-    d = cfg["dialogue"]
-    if d.get("subs"):
-        subs = d["subs"]
-        return [{"text": x["text"].lower(), "from": round(start + x["from"] - d["from"], 3),
-                 "to": round(start + subs[i + 1]["from"] - d["from"], 3) if i + 1 < len(subs) else round(drop, 3),
-                 "size": d.get("sub_size", 80), "y": "h*0.64"} for i, x in enumerate(subs)]
-    return [t for t in text_chunks(dialogue_words(cfg, rel, start), drop, set()) if t["from"] < drop]
+def dialogue_parts(cfg, start):
+    """The dialogue parts with the song time each one starts at, back to back from start."""
+    d = cfg.get("dialogue")
+    parts, at = [], start
+    for p in (d if isinstance(d, list) else [d] if d else []):
+        parts.append((p, at))
+        at += p["to"] - p["from"]
+    return parts
 
 
-def dialogue_words(cfg, rel, start):
-    """Scene words from a transcribe.py file, moved onto song time."""
-    d = cfg["dialogue"]
+def dialogue_texts(cfg, rel, start):
+    """Subtitles for the scenes, on song time: hand-written "subs" if given, else whisper words."""
+    out = []
+    for d, at in dialogue_parts(cfg, start):
+        end = at + d["to"] - d["from"]
+        if d.get("subs"):
+            subs = d["subs"]
+            out += [{"text": x["text"].lower(), "from": round(at + x["from"] - d["from"], 3),
+                     "to": round(at + subs[i + 1]["from"] - d["from"] if i + 1 < len(subs) else end, 3),
+                     "size": d.get("sub_size", cfg.get("sub_size", 80)), "y": "h*0.64"} for i, x in enumerate(subs)]
+        else:
+            out += [t for t in text_chunks(dialogue_words(d, rel, at), end, set()) if t["from"] < end]
+        if d.get("label"):
+            # who is talking, small at the top (credits the creator too)
+            out.append({"text": d["label"].lower(), "from": round(at, 3), "to": round(end, 3), "size": 55, "y": "h*0.1"})
+    return out
+
+
+def dialogue_words(d, rel, at):
+    """One part's words from a transcribe.py file, moved onto song time."""
     segs = json.load(open(rel(d["words"])))
-    return [{"word": w["w"].strip(), "at": round(start + w["s"] - d["from"], 3)}
+    return [{"word": w["w"].strip(), "at": round(at + w["s"] - d["from"], 3)}
             for s in segs for w in s["words"] if d["from"] <= w["s"] < d["to"] - 0.1]
 
 
@@ -165,12 +183,13 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
     montage = cfg["montage_queries"]
     slots = []
     if dia:
-        # one unbroken scene up to the drop, so its own audio stays in sync
+        # each scene runs unbroken, so its own audio stays in sync; the montage starts on the drop
         starts = [j for j in starts if j >= di]
-        for sh in dia.get("shots") or [{"from": dia["from"]}]:
-            slots.append({"at": round(start + sh["from"] - dia["from"], 3), "clip": dia["clip"], "from": sh["from"],
-                          "fx": [], "note": "dialogue", **({"box": sh["box"]} if sh.get("box") else {})})
-        picker.last = dia["clip"]
+        for d, at in dialogue_parts(cfg, start):
+            for sh in d.get("shots") or [{"from": d["from"]}]:
+                slots.append({"at": round(at + sh["from"] - d["from"], 3), "clip": d["clip"], "from": sh["from"],
+                              "fx": [], "note": "dialogue", **({"box": sh["box"]} if sh.get("box") else {})})
+            picker.last = d["clip"]
     for j in starts:
         if j == di:
             q, fx = cfg["drop_query"], ["punch", "shake"]
@@ -199,11 +218,16 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
         "texts": texts, "flash_color": cfg.get("flash_color", "white"),
         **{k: cfg[k] for k in ("fade_out", "end_card") if cfg.get(k)},
     }
+    if cfg.get("end_card"):
+        # lyrics stop where the end card starts
+        c = cfg["end_card"]["from"]
+        tl["texts"] = texts = [dict(t, to=min(t["to"], c)) for t in texts if t["from"] < c]
     if dia:
         first = texts[0]["from"] if texts else drop
-        tl["texts"] = [dict(t, to=min(t["to"], first)) for t in dialogue_texts(cfg, rel, start, drop)] + texts
-        tl["dialogue"] = {"audio": dia["audio"], "from": dia["from"], "at": round(start, 3), "to": round(drop, 3),
-                          "duck": dia.get("duck", 0.3), "gain": dia.get("gain", 1.0)}
+        tl["texts"] = [dict(t, to=min(t["to"], first)) for t in dialogue_texts(cfg, rel, start)] + texts
+        tl["dialogue"] = [{"audio": d["audio"], "from": d["from"], "at": round(at, 3),
+                           "to": round(at + d["to"] - d["from"], 3), "duck": d.get("duck", cfg.get("duck", 0.3)),
+                           "gain": d.get("gain", cfg.get("dialogue_gain", 1.0))} for d, at in dialogue_parts(cfg, start)]
     return tl
 
 
@@ -216,7 +240,8 @@ def main(cfg_path, render=False):
     drop = cfg.get("drop") or find_drop(y, sr, start, end)
     if cfg.get("dialogue"):
         # the scene ends on the drop; lyrics only start there
-        start = drop - (cfg["dialogue"]["to"] - cfg["dialogue"]["from"])
+        parts = dialogue_parts(cfg, 0)
+        start = drop - (parts[-1][1] + parts[-1][0]["to"] - parts[-1][0]["from"])
     print(f"tempo {60 / np.median(np.diff(beats)):.1f} BPM, drop at {drop:.2f}s")
     words = lyric_words(json.load(open(rel(cfg["whisper"]))), open(rel(cfg["lyrics"])).read(),
                         cfg.get("lyrics_from", drop - 0.3) if cfg.get("dialogue") else start, end)
@@ -228,8 +253,8 @@ def main(cfg_path, render=False):
         # timelines in edits/auto/ resolve paths one level deeper than the config
         for k in ("audio", "sources", "boxes"):
             tl[k] = os.path.relpath(rel(tl[k]), out_dir)
-        if "dialogue" in tl:
-            tl["dialogue"]["audio"] = os.path.relpath(rel(tl["dialogue"]["audio"]), out_dir)
+        for d in tl.get("dialogue", []):
+            d["audio"] = os.path.relpath(rel(d["audio"]), out_dir)
         path = os.path.join(out_dir, f"{name}_v{v}.json")
         json.dump(tl, open(path, "w"), indent=1)
         print("wrote", path, f"({len(tl['slots'])} shots)")

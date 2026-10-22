@@ -15,7 +15,7 @@ Timeline format (times in song seconds):
   "fade_out": 1.0,
   "end_card": {"from": 131.0, "text": "coming soon", "sub": "przydan - work", "color": "0x39ff5a"}
 }
-"dialogue" (optional) plays a film scene's own audio from "from" (seconds in that file) over song time
+"dialogue" (optional, one or a list) plays a film scene's own audio from "from" (seconds in that file) over song time
 "at".."to", with the song turned down to "duck" until "to" (usually the drop).
 "fade_out" (optional) fades picture and sound out over the last N seconds instead of a hard stop.
 "end_card" (optional) cuts to black at "from" and shows glitching text (flicker, jitter, RGB split, noise
@@ -173,14 +173,19 @@ def main(timeline_path, out_path):
     else:
         graph += ";[base]null[v]"
     inputs = ["-i", joined, "-ss", str(t0), "-t", f"{dur:.3f}", "-i", rel(tl["audio"])]
-    dl = tl.get("dialogue")
-    if dl:
-        a, b = dl["at"] - t0, dl["to"] - t0
-        inputs += ["-ss", str(dl["from"]), "-t", f"{b - a:.3f}", "-i", rel(dl["audio"])]
-        graph += (f";[1:a]volume='if(lt(t,{b:.3f}),{dl.get('duck', 0.3)},1)':eval=frame[song]"
-                  f";[2:a]aformat=sample_rates=44100:channel_layouts=stereo,volume={dl.get('gain', 1.0)},"
-                  f"afade=t=out:st={b - a - 0.08:.3f}:d=0.08,adelay={a * 1000:.0f}:all=1[dia]"
-                  f";[song][dia]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.95:level=0[a]")
+    dls = tl.get("dialogue") or []
+    dls = [dls] if isinstance(dls, dict) else dls
+    if dls:
+        # the song stays turned down until the last scene ends
+        last = max(d["to"] for d in dls) - t0
+        graph += f";[1:a]volume='if(lt(t,{last:.3f}),{dls[0].get('duck', 0.3)},1)':eval=frame[song]"
+        for k, dl in enumerate(dls):
+            a, b = dl["at"] - t0, dl["to"] - t0
+            inputs += ["-ss", str(dl["from"]), "-t", f"{b - a:.3f}", "-i", rel(dl["audio"])]
+            graph += (f";[{k + 2}:a]aformat=sample_rates=44100:channel_layouts=stereo,volume={dl.get('gain', 1.0)},"
+                      f"afade=t=in:d=0.03,afade=t=out:st={b - a - 0.08:.3f}:d=0.08,adelay={a * 1000:.0f}:all=1[dia{k}]")
+        graph += (f";[song]{''.join(f'[dia{k}]' for k in range(len(dls)))}amix=inputs={len(dls) + 1}:normalize=0"
+                  f":duration=first,alimiter=limit=0.95:level=0[a]")
     else:
         graph += ";[1:a]anull[a]"
     vout, aout = "[v]", "[a]"

@@ -1,0 +1,156 @@
+{
+ "song": "../songs/work.mp3",
+ "lyrics": "../songs/work_lyrics.txt",
+ "whisper": "../songs/work_whisper_words.json",
+ "window": [
+  60.0,
+  89.0
+ ],
+ "drop": 75.45,
+ "lyrics_from": 75.4,
+ "end_at": 90.6,
+ "fade_out": 1.4,
+ "end_card": {
+  "from": 89.0,
+  "text": "coming soon",
+  "sub": "przydan - work",
+  "color": "0xff3030"
+ },
+ "sources": "../data/clips_surveillance",
+ "boxes": "boxes_surveillance.json",
+ "index": "../data/index_surveillance",
+ "variations": 3,
+ "text_style": "brat",
+ "text_fg": "white",
+ "flash_color": "0xff3030",
+ "duck": 0.15,
+ "big_words": [
+  "taxes",
+  "war",
+  "surveillance",
+  "state",
+  "burn"
+ ],
+ "dialogue": [
+  {
+   "clip": "vWj26RIlN_I",
+   "audio": "../data/dialogue_surv/vWj26RIlN_I.m4a",
+   "from": 0.0,
+   "to": 2.1,
+   "label": "christophe",
+   "subs": [
+    {
+     "from": 0.0,
+     "text": "sometimes i can't stop thinking"
+    },
+    {
+     "from": 1.14,
+     "text": "about all the cameras"
+    }
+   ],
+   "gain": 1.8
+  },
+  {
+   "clip": "ncCf00M7Axk",
+   "audio": "../data/dialogue_surv/ncCf00M7Axk.m4a",
+   "from": 27.5,
+   "to": 30.5,
+   "label": "anthony sistilli",
+   "subs": [
+    {
+     "from": 27.54,
+     "text": "turns out they're not just"
+    },
+    {
+     "from": 28.4,
+     "text": "tracking criminals"
+    },
+    {
+     "from": 29.58,
+     "text": "they're tracking everyone"
+    }
+   ],
+   "gain": 2.8
+  },
+  {
+   "clip": "tD3RbDZyw7A",
+   "audio": "../data/dialogue_surv/tD3RbDZyw7A.m4a",
+   "from": 24.7,
+   "to": 27.75,
+   "label": "alex karp, palantir ceo",
+   "shots": [
+    {
+     "from": 24.7,
+     "box": [
+      0.17,
+      0.0,
+      0.49,
+      1.0
+     ]
+    }
+   ],
+   "subs": [
+    {
+     "from": 24.78,
+     "text": "every single thing"
+    },
+    {
+     "from": 25.84,
+     "text": "we do"
+    },
+    {
+     "from": 26.44,
+     "text": "is monitored"
+    }
+   ],
+   "gain": 1.4
+  },
+  {
+   "clip": "1DOxy1AfN7c",
+   "audio": "../data/dialogue_surv/1DOxy1AfN7c.m4a",
+   "from": 20.35,
+   "to": 22.65,
+   "label": "penguinz0",
+   "subs": [
+    {
+     "from": 20.4,
+     "text": "you will own nothing"
+    },
+    {
+     "from": 21.64,
+     "text": "and be happy"
+    }
+   ],
+   "gain": 1.8
+  }
+ ],
+ "min_brightness": 25,
+ "max_brightness": 170,
+ "max_per_clip": 4,
+ "caption_cut_percent": 45,
+ "exclude_clips": [
+  "zPlfgCcTSVA",
+  "0j3r51Q4Dwo",
+  "dklLucT770E",
+  "deDhDhWXGgU"
+ ],
+ "drop_query": "a license plate reader camera mounted on a pole beside a road",
+ "anchors": {
+  "taxes": "stacks of money and tax forms",
+  "war": "soldiers and military drones in a war zone",
+  "surveillance": "a black surveillance camera on a pole looking down at the street",
+  "pop": "two police officers standing at a front door",
+  "run": "a control room full of screens showing camera feeds",
+  "burn": "a smashed and broken surveillance camera"
+ },
+ "montage_queries": [
+  "a license plate reader camera on a pole beside a road",
+  "security camera footage of cars on a street",
+  "police cars with flashing lights at night",
+  "a map covered in tracking dots and lines",
+  "computer screens showing surveillance data",
+  "a person covering a camera with a black trash bag",
+  "cars driving on a highway seen from above",
+  "a close up of a license plate being scanned"
+ ]
+}

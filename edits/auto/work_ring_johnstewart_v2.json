@@ -618,12 +618,14 @@
   "sub": "przydan - work",
   "color": "0x39ff5a"
  },
- "dialogue": {
-  "audio": "../../data/dialogue/-jC32AIIn14.m4a",
-  "from": 194.45,
-  "at": 108.4,
-  "to": 116.55,
-  "duck": 0.3,
-  "gain": 1.8
- }
+ "dialogue": [
+  {
+   "audio": "../../data/dialogue/-jC32AIIn14.m4a",
+   "from": 194.45,
+   "at": 108.4,
+   "to": 116.55,
+   "duck": 0.3,
+   "gain": 1.8
+  }
+ ]
 }

@@ -1,0 +1,688 @@
+{
+ "audio": "../../songs/work.mp3",
+ "start": 65.0,
+ "end": 90.6,
+ "sources": "../../data/clips_surveillance",
+ "boxes": "../boxes_surveillance.json",
+ "slots": [
+  {
+   "at": 65.0,
+   "clip": "vWj26RIlN_I",
+   "from": 0.0,
+   "fx": [],
+   "note": "dialogue"
+  },
+  {
+   "at": 67.1,
+   "clip": "ncCf00M7Axk",
+   "from": 27.5,
+   "fx": [],
+   "note": "dialogue"
+  },
+  {
+   "at": 70.1,
+   "clip": "tD3RbDZyw7A",
+   "from": 24.7,
+   "fx": [],
+   "note": "dialogue",
+   "box": [
+    0.17,
+    0.0,
+    0.49,
+    1.0
+   ]
+  },
+  {
+   "at": 73.15,
+   "clip": "1DOxy1AfN7c",
+   "from": 20.35,
+   "fx": [],
+   "note": "dialogue"
+  },
+  {
+   "at": 75.465,
+   "clip": "9Usx5LSXH1w",
+   "from": 192.49,
+   "fx": [
+    "punch",
+    "shake"
+   ],
+   "note": "a license plate reader camera mounted on a pole beside a road"
+  },
+  {
+   "at": 75.906,
+   "clip": "DZ95Gmvg_D4",
+   "from": 20.37,
+   "fx": [
+    "punch"
+   ],
+   "note": "stacks of money and tax forms"
+  },
+  {
+   "at": 76.765,
+   "clip": "vWj26RIlN_I",
+   "from": 635.63,
+   "fx": [],
+   "note": "security camera footage of cars on a street"
+  },
+  {
+   "at": 77.183,
+   "clip": "DZ95Gmvg_D4",
+   "from": 43.96,
+   "fx": [
+    "punch"
+   ],
+   "note": "soldiers and military drones in a war zone"
+  },
+  {
+   "at": 78.042,
+   "clip": "vWj26RIlN_I",
+   "from": 183.43,
+   "fx": [],
+   "note": "a close up of a license plate being scanned"
+  },
+  {
+   "at": 78.483,
+   "clip": "0Mc3MTpkZEQ",
+   "from": 248.29,
+   "fx": [
+    "punch"
+   ],
+   "note": "a black surveillance camera on a pole looking down at the street"
+  },
+  {
+   "at": 79.319,
+   "clip": "vWj26RIlN_I",
+   "from": 377.6,
+   "fx": [],
+   "note": "a map covered in tracking dots and lines"
+  },
+  {
+   "at": 79.761,
+   "clip": "0Mc3MTpkZEQ",
+   "from": 65.59,
+   "fx": [],
+   "note": "a license plate reader camera on a pole beside a road"
+  },
+  {
+   "at": 80.202,
+   "clip": "vWj26RIlN_I",
+   "from": 184.14,
+   "fx": [],
+   "note": "cars driving on a highway seen from above"
+  },
+  {
+   "at": 80.62,
+   "clip": "ncCf00M7Axk",
+   "from": 1976.29,
+   "fx": [],
+   "note": "a license plate reader camera on a pole beside a road"
+  },
+  {
+   "at": 81.038,
+   "clip": "9Usx5LSXH1w",
+   "from": 297.21,
+   "fx": [
+    "punch"
+   ],
+   "note": "two police officers standing at a front door"
+  },
+  {
+   "at": 81.897,
+   "clip": "DZ95Gmvg_D4",
+   "from": 85.88,
+   "fx": [],
+   "note": "a map covered in tracking dots and lines"
+  },
+  {
+   "at": 82.315,
+   "clip": "9Usx5LSXH1w",
+   "from": 60.79,
+   "fx": [],
+   "note": "security camera footage of cars on a street"
+  },
+  {
+   "at": 82.756,
+   "clip": "0Mc3MTpkZEQ",
+   "from": 67.48,
+   "fx": [],
+   "note": "a license plate reader camera on a pole beside a road"
+  },
+  {
+   "at": 83.197,
+   "clip": "9Usx5LSXH1w",
+   "from": 25.93,
+   "fx": [
+    "punch"
+   ],
+   "note": "a control room full of screens showing camera feeds"
+  },
+  {
+   "at": 84.033,
+   "clip": "0Mc3MTpkZEQ",
+   "from": 61.81,
+   "fx": [],
+   "note": "a license plate reader camera on a pole beside a road"
+  },
+  {
+   "at": 84.474,
+   "clip": "DZ95Gmvg_D4",
+   "from": 917.29,
+   "fx": [],
+   "note": "cars driving on a highway seen from above"
+  },
+  {
+   "at": 84.892,
+   "clip": "ncCf00M7Axk",
+   "from": 718.0,
+   "fx": [
+    "punch"
+   ],
+   "note": "a smashed and broken surveillance camera"
+  },
+  {
+   "at": 85.775,
+   "clip": "LJSgsf9ro38",
+   "from": 271.4,
+   "fx": [],
+   "note": "a license plate reader camera on a pole beside a road"
+  },
+  {
+   "at": 86.192,
+   "clip": "ncCf00M7Axk",
+   "from": 1535.29,
+   "fx": [],
+   "note": "a close up of a license plate being scanned"
+  },
+  {
+   "at": 86.61,
+   "clip": "LJSgsf9ro38",
+   "from": 931.36,
+   "fx": [],
+   "note": "a map covered in tracking dots and lines"
+  },
+  {
+   "at": 87.028,
+   "clip": "ncCf00M7Axk",
+   "from": 880.5,
+   "fx": [],
+   "note": "a map covered in tracking dots and lines"
+  },
+  {
+   "at": 87.47,
+   "clip": "LJSgsf9ro38",
+   "from": 853.7,
+   "fx": [],
+   "note": "computer screens showing surveillance data"
+  },
+  {
+   "at": 87.911,
+   "clip": "VFns39RXPrU",
+   "from": 896.35,
+   "fx": [],
+   "note": "cars driving on a highway seen from above"
+  },
+  {
+   "at": 88.329,
+   "clip": "LJSgsf9ro38",
+   "from": 761.51,
+   "fx": [],
+   "note": "security camera footage of cars on a street"
+  }
+ ],
+ "flashes": [
+  75.465,
+  75.906,
+  76.324,
+  76.765,
+  77.183,
+  78.483,
+  78.901,
+  80.62,
+  81.038,
+  82.315,
+  83.197,
+  84.033,
+  84.892,
+  85.775,
+  87.47
+ ],
+ "text_style": "brat",
+ "text_fg": "white",
+ "texts": [
+  {
+   "text": "sometimes i can't stop thinking",
+   "from": 65.0,
+   "to": 66.14,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "about all the cameras",
+   "from": 66.14,
+   "to": 67.1,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "christophe",
+   "from": 65.0,
+   "to": 67.1,
+   "size": 55,
+   "y": "h*0.1"
+  },
+  {
+   "text": "turns out they're not just",
+   "from": 67.14,
+   "to": 68.0,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "tracking criminals",
+   "from": 68.0,
+   "to": 69.18,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "they're tracking everyone",
+   "from": 69.18,
+   "to": 70.1,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "anthony sistilli",
+   "from": 67.1,
+   "to": 70.1,
+   "size": 55,
+   "y": "h*0.1"
+  },
+  {
+   "text": "every single thing",
+   "from": 70.18,
+   "to": 71.24,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "we do",
+   "from": 71.24,
+   "to": 71.84,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "is monitored",
+   "from": 71.84,
+   "to": 73.15,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "alex karp, palantir ceo",
+   "from": 70.1,
+   "to": 73.15,
+   "size": 55,
+   "y": "h*0.1"
+  },
+  {
+   "text": "you will own nothing",
+   "from": 73.2,
+   "to": 74.44,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "and be happy",
+   "from": 74.44,
+   "to": 75.45,
+   "size": 80,
+   "y": "h*0.64"
+  },
+  {
+   "text": "penguinz0",
+   "from": 73.15,
+   "to": 75.45,
+   "size": 55,
+   "y": "h*0.1"
+  },
+  {
+   "text": "all of",
+   "from": 75.48,
+   "to": 75.62,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "my",
+   "from": 75.62,
+   "to": 75.78,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "taxes",
+   "from": 75.78,
+   "to": 76.08,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "they going",
+   "from": 76.08,
+   "to": 76.5,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "inside of",
+   "from": 76.5,
+   "to": 76.94,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "a",
+   "from": 76.94,
+   "to": 77.153,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "war",
+   "from": 77.153,
+   "to": 77.367,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "on some",
+   "from": 77.367,
+   "to": 77.84,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "bullshit",
+   "from": 77.84,
+   "to": 78.64,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "surveillance",
+   "from": 78.64,
+   "to": 78.98,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "state",
+   "from": 78.98,
+   "to": 79.32,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "is",
+   "from": 79.32,
+   "to": 79.66,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "going",
+   "from": 79.66,
+   "to": 80.0,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "up",
+   "from": 80.0,
+   "to": 80.46,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "but who",
+   "from": 80.46,
+   "to": 80.62,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "the fuck",
+   "from": 80.62,
+   "to": 80.9,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "pop up",
+   "from": 80.9,
+   "to": 81.22,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "and say",
+   "from": 81.22,
+   "to": 81.54,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "some shit",
+   "from": 81.54,
+   "to": 82.04,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "one day",
+   "from": 82.04,
+   "to": 82.43,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "imma",
+   "from": 82.43,
+   "to": 82.66,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "go up",
+   "from": 82.66,
+   "to": 82.94,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "and run",
+   "from": 82.94,
+   "to": 83.24,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "this",
+   "from": 83.24,
+   "to": 83.48,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "shit",
+   "from": 83.48,
+   "to": 83.78,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "i'm never",
+   "from": 83.78,
+   "to": 84.16,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "gon let",
+   "from": 84.16,
+   "to": 84.48,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "them all",
+   "from": 84.48,
+   "to": 84.78,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "burn",
+   "from": 84.78,
+   "to": 84.92,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "this",
+   "from": 84.92,
+   "to": 85.16,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "shit",
+   "from": 85.16,
+   "to": 85.52,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "i'm even",
+   "from": 85.52,
+   "to": 85.76,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "gon",
+   "from": 85.76,
+   "to": 86.04,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "make it",
+   "from": 86.04,
+   "to": 86.32,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "my birthday",
+   "from": 86.32,
+   "to": 86.74,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "wish",
+   "from": 86.74,
+   "to": 87.033,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "i'm",
+   "from": 87.033,
+   "to": 87.327,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "smoking",
+   "from": 87.327,
+   "to": 87.62,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "my opps",
+   "from": 87.62,
+   "to": 87.88,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "like a",
+   "from": 87.88,
+   "to": 88.387,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "dunhill",
+   "from": 88.387,
+   "to": 88.713,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "switch",
+   "from": 88.713,
+   "to": 89.0,
+   "size": 125,
+   "y": "h*0.64"
+  }
+ ],
+ "flash_color": "0xff3030",
+ "fade_out": 1.4,
+ "end_card": {
+  "from": 89.0,
+  "text": "coming soon",
+  "sub": "przydan - work",
+  "color": "0xff3030"
+ },
+ "dialogue": [
+  {
+   "audio": "../../data/dialogue_surv/vWj26RIlN_I.m4a",
+   "from": 0.0,
+   "at": 65.0,
+   "to": 67.1,
+   "duck": 0.15,
+   "gain": 1.8
+  },
+  {
+   "audio": "../../data/dialogue_surv/ncCf00M7Axk.m4a",
+   "from": 27.5,
+   "at": 67.1,
+   "to": 70.1,
+   "duck": 0.15,
+   "gain": 2.8
+  },
+  {
+   "audio": "../../data/dialogue_surv/tD3RbDZyw7A.m4a",
+   "from": 24.7,
+   "at": 70.1,
+   "to": 73.15,
+   "duck": 0.15,
+   "gain": 1.4
+  },
+  {
+   "audio": "../../data/dialogue_surv/1DOxy1AfN7c.m4a",
+   "from": 20.35,
+   "at": 73.15,
+   "to": 75.45,
+   "duck": 0.15,
+   "gain": 1.8
+  }
+ ]
+}

@@ -109,6 +109,15 @@ Decided 2026-10-22. HBO's *Lanterns* is airing and Aaron Pierre's John Stewart i
 - **Ending (artist feedback):** stopping right after the bird felt abrupt. Now John's grin holds for about 1.1 s, then a 1.6 s **glitch "coming soon" card** (black screen, "przydan - work" under it, green/magenta colour split, sideways jitter, flicker, moving green bars, grain) while the song fades out (`end_card`, `fade_out`). Use this ending on every snippet of an unreleased song.
 - Unavailable: "Best of Green Lantern (John Stewart)" by DC (`59b3m1u1zds`) and the Justice League S2 compilation didn't download; teaser 2 audio gave a 403.
 
+## Edit 3: Work x "we are being watched" (creators on surveillance)
+
+Decided 2026-10-22. The artist wanted a completely different direction. The "surveillance state" verse is about Flock cameras and Palantir, so the edit opens with popular creators saying it, then the verse answers.
+
+- **Trend check:** TikTok now hides hashtag feeds and song charts from logged-out visitors (`tool/scrape_tags.mjs` gets empty replies, and so does a real browser). The public Creative Center showed Halloween horror on top (#tiktokscaryhorrorcontest, 312M views in a week). An analog-horror "CAM 04" idea using the artist's own night footage is in the marketing guide, waiting on footage.
+- **The edit** (`edits/work_surveillance_watched.auto.json`, sources `edits/sources_surveillance.json`): Christophe ("all the cameras"), Anthony Sistilli ("tracking everyone"), Alex Karp ("every single thing we do is monitored") and penguinz0 ("you will own nothing and be happy"), 10.45 s back to back over a 15% song. The verse lands at 1:15.45 and runs to 1:29, then a red glitch end card. The montage uses the same creators' videos (Flock cameras, tracking maps, police at the door on "pop up", smashed cameras on "burn"). v3 is the best.
+- **Pipeline:** `dialogue` can be a list of parts (each with its own audio, crops, subs, `gain` and a `label` name tag); `duck` sets the song level under them; lyrics stop at the end card.
+- **Lessons:** exclude reposted-TikTok compilations and news clips with banners (their captions leak in), raise `caption_cut_percent` to about 45 for commentary footage, level each voice on its own (YouTube voices ranged -17 to -23 dB), and skip shots with real campaign signs. Use whole-file audio downloads; `--download-sections` streams at real time.
+
 ## Next steps
 
 1. On the PC: fetch the YouTube scenepacks, rebuild the index (`index_shots.py`, `clip_embed.py`), re-run the auto-assembler for 4K-sourced Batman edits.
