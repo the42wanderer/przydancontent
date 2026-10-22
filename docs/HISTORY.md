@@ -96,6 +96,16 @@ Known issues: the assembler drops captioned frames (CLIP "text on screen" filter
 - 2026-10-22, on the artist's Mac: all 12 YouTube scenepacks downloaded fine from home (36 of 37 sources; TikTok 7411719521494404398 fails but is excluded anyway). Index rebuilt: 2,524 shots. Auto Batman edits re-rendered into `out/`; v2 was the cleanest. `RajlSpO16a0` (Evolution of the Bat-signal) is excluded because it mixes 4:3 and widescreen and its 1940s title card leaks text into the crop.
 - Mac setup: `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt imageio-ffmpeg`. Homebrew's ffmpeg has no `drawtext` (no libfreetype), so link imageio-ffmpeg's binary as `.venv/bin/ffmpeg` and run with `PATH=$PWD/.venv/bin:$PATH`.
 
+## Edit 2: Work x John Stewart (Lanterns), "the ring says you are"
+
+Decided 2026-10-22. HBO's *Lanterns* is airing and Aaron Pierre's John Stewart is getting buzz. The artist asked for a dialogue scene that turns into an edit.
+
+- **Concept:** about 8 s of the show where Hal tells John "you're just a substitute teacher, Junior. You're not ready to get up in front of the class until the ring says you are." It plays over Work's filtered intro and ends on John's silent stare. The drop (0:34.27) is the payoff: every John Stewart with the ring (*Lanterns* plus the *Justice League* / *Justice League Unlimited* and other animated versions), cut on every beat, with **green** flashes. Lyrics stay white brat. The scene is song 26.1–34.27, the montage runs to 48.5 (ends after "too cocky"), about 22 s total.
+- Config `edits/work_ring_johnstewart.auto.json`, sources `edits/sources_lanterns.json`. The scene comes from DC's official "Best of Lanterns" compilation (`-jC32AIIn14`, 194.45–202.6 s). Its audio is in `data/dialogue/` (yt-dlp audio-only), with whisper transcripts of the trailers alongside.
+- New pipeline features: `dialogue` in auto configs and timelines (scene audio mixed in, song turned down to 0.3 until the drop, +5 dB dialogue gain, limiter), per-shot crop `box` (follows the speaker, since Hal is left of frame and John right), hand-written `subs` (whisper misheard the payoff line), `flash_color`.
+- Lessons: montage sources must be **character-only** compilations. Trailers and two-hander scenepacks brought in Hal, Guy Gardner and other cast, because CLIP can't tell live-action John from Hal. `max_per_clip` 6 is fine for long compilations. v3 was the best render (ends on Pierre raising the ring).
+- Unavailable: "Best of Green Lantern (John Stewart)" by DC (`59b3m1u1zds`) and the Justice League S2 compilation didn't download; teaser 2 audio gave a 403.
+
 ## Next steps
 
 1. On the PC: fetch the YouTube scenepacks, rebuild the index (`index_shots.py`, `clip_embed.py`), re-run the auto-assembler for 4K-sourced Batman edits.

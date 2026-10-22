@@ -7,6 +7,11 @@ song window, lays out slots (one per bar before the drop, one per beat after it,
 anchor words), and fills each slot with a shot from the CLIP index that matches the slot's query.
 Writes one timeline per variation to edits/auto/<name>_vN.json; --render also renders them to out/.
 
+"dialogue" (optional): {"clip", "audio", "words", "from", "to"} opens the edit with that film scene
+(source seconds from..to, its own audio and subtitles) so it ends right on the drop; the montage starts there.
+Optional "shots": [{"from", "box"}] crops each of the scene's own shots on its speaker, and "subs":
+[{"from", "text"}] replaces the whisper words with hand-checked subtitle phrases ("sub_size", default 80).
+
 Shot rules: no shot (or another piece of the same shot) used twice, at most max_per_clip uses of one source clip, never the same clip
 twice in a row, dark shots skipped, high-motion shots preferred after the drop.
 """
@@ -109,9 +114,28 @@ class Picker:
         return s
 
 
-def assemble(cfg, rel, beats, drop, words, variation):
+def dialogue_texts(cfg, rel, start, drop):
+    """Subtitles for the scene, on song time: hand-written "subs" if given, else whisper words."""
+    d = cfg["dialogue"]
+    if d.get("subs"):
+        subs = d["subs"]
+        return [{"text": x["text"].lower(), "from": round(start + x["from"] - d["from"], 3),
+                 "to": round(start + subs[i + 1]["from"] - d["from"], 3) if i + 1 < len(subs) else round(drop, 3),
+                 "size": d.get("sub_size", 80), "y": "h*0.64"} for i, x in enumerate(subs)]
+    return [t for t in text_chunks(dialogue_words(cfg, rel, start), drop, set()) if t["from"] < drop]
+
+
+def dialogue_words(cfg, rel, start):
+    """Scene words from a transcribe.py file, moved onto song time."""
+    d = cfg["dialogue"]
+    segs = json.load(open(rel(d["words"])))
+    return [{"word": w["w"].strip(), "at": round(start + w["s"] - d["from"], 3)}
+            for s in segs for w in s["words"] if d["from"] <= w["s"] < d["to"] - 0.1]
+
+
+def assemble(cfg, rel, beats, drop, words, variation, start, end):
     rng = random.Random(variation)
-    start, end = cfg["window"]
+    dia = cfg.get("dialogue")
     grid = [float(b) for b in beats if start - 0.05 <= b <= end + 0.05]
     di = int(np.argmin([abs(b - drop) for b in grid]))
     anchors = cfg.get("anchors", {})
@@ -137,6 +161,13 @@ def assemble(cfg, rel, beats, drop, words, variation):
     picker = Picker(cfg, rel, rng)
     montage = cfg["montage_queries"]
     slots = []
+    if dia:
+        # one unbroken scene up to the drop, so its own audio stays in sync
+        starts = [j for j in starts if j >= di]
+        for sh in dia.get("shots") or [{"from": dia["from"]}]:
+            slots.append({"at": round(start + sh["from"] - dia["from"], 3), "clip": dia["clip"], "from": sh["from"],
+                          "fx": [], "note": "dialogue", **({"box": sh["box"]} if sh.get("box") else {})})
+        picker.last = dia["clip"]
     for j in starts:
         if j == di:
             q, fx = cfg["drop_query"], ["punch", "shake"]
@@ -150,13 +181,20 @@ def assemble(cfg, rel, beats, drop, words, variation):
         slots.append({"at": round(grid[j], 3), "clip": s["vid"], "from": round(s["start"], 2), "fx": fx, "note": q})
     flashes = sorted({round(grid[j], 3) for j in range(di, len(grid) - 1)
                       if j - di < 4 or (j - di) % 4 == 0 or j in hits})
-    return {
-        "audio": cfg["song"], "start": round(grid[0], 3), "end": round(grid[-1], 3),
+    texts = text_chunks(words, grid[-1], set(cfg.get("big_words", [])))
+    tl = {
+        "audio": cfg["song"], "start": round(start if dia else grid[0], 3), "end": round(grid[-1], 3),
         "sources": cfg["sources"], "boxes": cfg["boxes"],
         "slots": slots, "flashes": flashes,
         "text_style": cfg.get("text_style", "brat"), "text_fg": cfg.get("text_fg", "white"),
-        "texts": text_chunks(words, grid[-1], set(cfg.get("big_words", []))),
+        "texts": texts, "flash_color": cfg.get("flash_color", "white"),
     }
+    if dia:
+        first = texts[0]["from"] if texts else drop
+        tl["texts"] = [dict(t, to=min(t["to"], first)) for t in dialogue_texts(cfg, rel, start, drop)] + texts
+        tl["dialogue"] = {"audio": dia["audio"], "from": dia["from"], "at": round(start, 3), "to": round(drop, 3),
+                          "duck": dia.get("duck", 0.3), "gain": dia.get("gain", 1.0)}
+    return tl
 
 
 def main(cfg_path, render=False):
@@ -166,16 +204,22 @@ def main(cfg_path, render=False):
     y, sr, beats = beat_grid(rel(cfg["song"]))
     start, end = cfg["window"]
     drop = cfg.get("drop") or find_drop(y, sr, start, end)
+    if cfg.get("dialogue"):
+        # the scene ends on the drop; lyrics only start there
+        start = drop - (cfg["dialogue"]["to"] - cfg["dialogue"]["from"])
     print(f"tempo {60 / np.median(np.diff(beats)):.1f} BPM, drop at {drop:.2f}s")
-    words = lyric_words(json.load(open(rel(cfg["whisper"]))), open(rel(cfg["lyrics"])).read(), start, end)
+    words = lyric_words(json.load(open(rel(cfg["whisper"]))), open(rel(cfg["lyrics"])).read(),
+                        drop - 0.3 if cfg.get("dialogue") else start, end)
     name = os.path.basename(cfg_path).replace(".auto.json", "")
     out_dir = os.path.join(base, "auto")
     os.makedirs(out_dir, exist_ok=True)
     for v in range(1, cfg.get("variations", 3) + 1):
-        tl = assemble(cfg, rel, beats, drop, words, v)
+        tl = assemble(cfg, rel, beats, drop, words, v, start, end)
         # timelines in edits/auto/ resolve paths one level deeper than the config
         for k in ("audio", "sources", "boxes"):
             tl[k] = os.path.relpath(rel(tl[k]), out_dir)
+        if "dialogue" in tl:
+            tl["dialogue"]["audio"] = os.path.relpath(rel(tl["dialogue"]["audio"]), out_dir)
         path = os.path.join(out_dir, f"{name}_v{v}.json")
         json.dump(tl, open(path, "w"), indent=1)
         print("wrote", path, f"({len(tl['slots'])} shots)")

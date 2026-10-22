@@ -1,0 +1,131 @@
+{
+ "song": "../songs/work.mp3",
+ "lyrics": "../songs/work_lyrics.txt",
+ "whisper": "../songs/work_whisper_words.json",
+ "window": [
+  26.0,
+  48.5
+ ],
+ "drop": 34.27,
+ "sources": "../data/clips_lanterns",
+ "boxes": "boxes_lanterns.json",
+ "index": "../data/index_lanterns",
+ "variations": 3,
+ "text_style": "brat",
+ "text_fg": "white",
+ "flash_color": "0x39ff5a",
+ "big_words": [
+  "work",
+  "body",
+  "hurt",
+  "bird",
+  "cocky"
+ ],
+ "dialogue": {
+  "clip": "-jC32AIIn14",
+  "audio": "../data/dialogue/-jC32AIIn14.m4a",
+  "words": "../data/dialogue/-jC32AIIn14.json",
+  "from": 194.45,
+  "to": 202.6,
+  "duck": 0.3,
+  "shots": [
+   {
+    "from": 194.45,
+    "box": [
+     0.65,
+     0.06,
+     0.95,
+     0.94
+    ]
+   },
+   {
+    "from": 195.11,
+    "box": [
+     0.11,
+     0.06,
+     0.41,
+     0.94
+    ]
+   },
+   {
+    "from": 199.03,
+    "box": [
+     0.6,
+     0.06,
+     0.9,
+     0.94
+    ]
+   }
+  ],
+  "subs": [
+   {
+    "from": 194.54,
+    "text": "the big blue bosses"
+   },
+   {
+    "from": 195.46,
+    "text": "may think that you're hot shit"
+   },
+   {
+    "from": 197.0,
+    "text": "but you're just a"
+   },
+   {
+    "from": 197.66,
+    "text": "f*cking substitute teacher"
+   },
+   {
+    "from": 199.12,
+    "text": "junior"
+   },
+   {
+    "from": 199.9,
+    "text": "you're not ready"
+   },
+   {
+    "from": 200.32,
+    "text": "to get up in front of the class"
+   },
+   {
+    "from": 201.34,
+    "text": "until the ring"
+   },
+   {
+    "from": 202.0,
+    "text": "says you are"
+   }
+  ],
+  "gain": 1.8
+ },
+ "min_brightness": 28,
+ "max_brightness": 150,
+ "max_per_clip": 6,
+ "exclude_clips": [
+  "-jC32AIIn14",
+  "RrqwUiAssyk",
+  "7UIBOsuUwc4",
+  "Z1jcPlGXnMo",
+  "XmcIjxwLJcY",
+  "-05WmSAmLK4",
+  "Gse054Yx7T0"
+ ],
+ "character": "green lantern john stewart",
+ "drop_query": "a green lantern ring glowing bright green on a fist",
+ "anchors": {
+  "work": "john stewart in a green lantern suit with glowing green eyes",
+  "hurt": "green lantern punching an enemy with a glowing green energy fist",
+  "copy": "green lantern creating a giant green energy construct",
+  "bird": "green lantern flying through the sky glowing green",
+  "cocky": "green lantern standing confidently, glowing green aura"
+ },
+ "montage_queries": [
+  "green lantern john stewart fighting with green energy",
+  "animated green lantern john stewart from the justice league cartoon",
+  "green lantern firing a green energy beam",
+  "green lantern flying through space",
+  "close up of a man with glowing green eyes",
+  "a man in a green lantern suit landing on the ground",
+  "green energy shield blocking an explosion",
+  "green lantern charging his ring at the lantern battery"
+ ]
+}

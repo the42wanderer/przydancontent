@@ -9,9 +9,14 @@ Timeline format (times in song seconds):
   "sources": "dir with source clips", "boxes": "content boxes json",
   "slots": [{"at": 110.62, "clip": "<video id>", "from": 4.5, "fx": ["punch"]}, ...],
   "flashes": [116.611, ...],
-  "texts": [{"text": "PRZYDAN", "from": 113.3, "to": 116.5}]
+  "texts": [{"text": "PRZYDAN", "from": 113.3, "to": 116.5}],
+  "flash_color": "white",
+  "dialogue": {"audio": "path/to/scene.m4a", "from": 41.2, "at": 22.5, "to": 34.27, "duck": 0.3, "gain": 1.8}
 }
+"dialogue" (optional) plays a film scene's own audio from "from" (seconds in that file) over song time
+"at".."to", with the song turned down to "duck" until "to" (usually the drop).
 Each slot runs until the next slot's "at" (the last one until "end").
+A slot's own "box" overrides the clip's box (e.g. to follow a speaker in a dialogue scene).
 fx: "punch" = zoom-in that settles over 0.3 s, "shake" = 0.4 s camera shake.
 """
 import json
@@ -94,7 +99,7 @@ def main(timeline_path, out_path):
         part = os.path.join(tmp, f"{i:03d}.mp4")
         src = os.path.join(rel(tl["sources"]), s["clip"] + ".mp4")
         run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", str(s["from"]), "-i", src, "-t", f"{dur + 0.2:.3f}",
-             "-vf", segment_filter(pixel_box(boxes.get(s["clip"]), src), s.get("fx", []), dur), "-frames:v", str(frames),
+             "-vf", segment_filter(pixel_box(s.get("box") or boxes.get(s["clip"]), src), s.get("fx", []), dur), "-frames:v", str(frames),
              "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", part])
         parts.append(part)
     lst = os.path.join(tmp, "list.txt")
@@ -104,10 +109,11 @@ def main(timeline_path, out_path):
 
     t0 = tl["start"]
     post = []
+    fc = tl.get("flash_color", "white")
     for t in tl.get("flashes", []):
         a = t - t0
-        post.append(f"drawbox=x=0:y=0:w=iw:h=ih:color=white@0.85:t=fill:enable='between(t,{a:.3f},{a + 0.067:.3f})'")
-        post.append(f"drawbox=x=0:y=0:w=iw:h=ih:color=white@0.35:t=fill:enable='between(t,{a + 0.067:.3f},{a + 0.13:.3f})'")
+        post.append(f"drawbox=x=0:y=0:w=iw:h=ih:color={fc}@0.85:t=fill:enable='between(t,{a:.3f},{a + 0.067:.3f})'")
+        post.append(f"drawbox=x=0:y=0:w=iw:h=ih:color={fc}@0.35:t=fill:enable='between(t,{a + 0.067:.3f},{a + 0.13:.3f})'")
     dur = tl["end"] - t0
     brat = tl.get("text_style") == "brat"
     bg, fg = tl.get("text_bg"), tl.get("text_fg", "white")
@@ -138,8 +144,19 @@ def main(timeline_path, out_path):
                   f"{','.join(texts)},gblur=sigma=1.4,scale={W}:{H}[txt];[base][txt]overlay=0:0[v]")
     else:
         graph += ";[base]null[v]"
-    run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", joined, "-ss", str(t0), "-t", f"{dur:.3f}", "-i", rel(tl["audio"]),
-         "-filter_complex", graph, "-map", "[v]", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+    inputs = ["-i", joined, "-ss", str(t0), "-t", f"{dur:.3f}", "-i", rel(tl["audio"])]
+    dl = tl.get("dialogue")
+    if dl:
+        a, b = dl["at"] - t0, dl["to"] - t0
+        inputs += ["-ss", str(dl["from"]), "-t", f"{b - a:.3f}", "-i", rel(dl["audio"])]
+        graph += (f";[1:a]volume='if(lt(t,{b:.3f}),{dl.get('duck', 0.3)},1)':eval=frame[song]"
+                  f";[2:a]aformat=sample_rates=44100:channel_layouts=stereo,volume={dl.get('gain', 1.0)},"
+                  f"afade=t=out:st={b - a - 0.08:.3f}:d=0.08,adelay={a * 1000:.0f}:all=1[dia]"
+                  f";[song][dia]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.95:level=0[a]")
+    else:
+        graph += ";[1:a]anull[a]"
+    run(["ffmpeg", "-nostdin", "-v", "error", "-y", *inputs,
+         "-filter_complex", graph, "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
          "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out_path])
     print("wrote", out_path)
 
