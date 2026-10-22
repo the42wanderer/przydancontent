@@ -9,6 +9,8 @@ Writes one timeline per variation to edits/auto/<name>_vN.json; --render also re
 
 "dialogue" (optional): {"clip", "audio", "words", "from", "to"} opens the edit with that film scene
 (source seconds from..to, its own audio and subtitles) so it ends right on the drop; the montage starts there.
+An anchor can name an exact shot instead of a query: "bird": {"clip": "<id>", "from": 43.6, "beats": 3}
+("beats" = how long it holds, default 2). "end_at" (song seconds) lets the last shot run past the last beat.
 Optional "shots": [{"from", "box"}] crops each of the scene's own shots on its speaker, and "subs":
 [{"from", "text"}] replaces the whisper words with hand-checked subtitle phrases ("sub_size", default 80).
 
@@ -153,7 +155,8 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
     while i < len(grid) - 1:
         starts.append(i)
         if i in hits:
-            i = i + 2 if not i < di < i + 2 else di
+            hold = hits[i].get("beats", 2) if isinstance(hits[i], dict) else 2
+            i = i + hold if not i < di < i + hold else di
         elif i < di:
             i = min(i + 4, di) if not any(i < h < min(i + 4, di) for h in hits) else min(h for h in hits if h > i)
         else:
@@ -177,13 +180,19 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
             q, fx = rng.choice(cfg.get("breakdown_queries", montage)), []
         else:
             q, fx = rng.choice(montage), []
+        if isinstance(q, dict):
+            # a hand-picked shot for this word
+            picker.last = q["clip"]
+            picker.per_clip[q["clip"]] = picker.per_clip.get(q["clip"], 0) + 1
+            slots.append({"at": round(grid[j], 3), "clip": q["clip"], "from": q["from"], "fx": fx, "note": "fixed"})
+            continue
         s = picker.pick(q, j >= di)
         slots.append({"at": round(grid[j], 3), "clip": s["vid"], "from": round(s["start"], 2), "fx": fx, "note": q})
     flashes = sorted({round(grid[j], 3) for j in range(di, len(grid) - 1)
                       if j - di < 4 or (j - di) % 4 == 0 or j in hits})
-    texts = text_chunks(words, grid[-1], set(cfg.get("big_words", [])))
+    texts = text_chunks(words, cfg.get("end_at", grid[-1]), set(cfg.get("big_words", [])))
     tl = {
-        "audio": cfg["song"], "start": round(start if dia else grid[0], 3), "end": round(grid[-1], 3),
+        "audio": cfg["song"], "start": round(start if dia else grid[0], 3), "end": round(cfg.get("end_at", grid[-1]), 3),
         "sources": cfg["sources"], "boxes": cfg["boxes"],
         "slots": slots, "flashes": flashes,
         "text_style": cfg.get("text_style", "brat"), "text_fg": cfg.get("text_fg", "white"),
@@ -209,7 +218,7 @@ def main(cfg_path, render=False):
         start = drop - (cfg["dialogue"]["to"] - cfg["dialogue"]["from"])
     print(f"tempo {60 / np.median(np.diff(beats)):.1f} BPM, drop at {drop:.2f}s")
     words = lyric_words(json.load(open(rel(cfg["whisper"]))), open(rel(cfg["lyrics"])).read(),
-                        drop - 0.3 if cfg.get("dialogue") else start, end)
+                        cfg.get("lyrics_from", drop - 0.3) if cfg.get("dialogue") else start, end)
     name = os.path.basename(cfg_path).replace(".auto.json", "")
     out_dir = os.path.join(base, "auto")
     os.makedirs(out_dir, exist_ok=True)

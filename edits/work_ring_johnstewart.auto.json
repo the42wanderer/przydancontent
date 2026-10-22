@@ -3,10 +3,10 @@
  "lyrics": "../songs/work_lyrics.txt",
  "whisper": "../songs/work_whisper_words.json",
  "window": [
-  26.0,
-  48.5
+  108.0,
+  130.6
  ],
- "drop": 34.27,
+ "drop": 116.55,
  "sources": "../data/clips_lanterns",
  "boxes": "boxes_lanterns.json",
  "index": "../data/index_lanterns",
@@ -115,8 +115,15 @@
   "work": "john stewart in a green lantern suit with glowing green eyes",
   "hurt": "green lantern punching an enemy with a glowing green energy fist",
   "copy": "green lantern creating a giant green energy construct",
-  "bird": "green lantern flying through the sky glowing green",
-  "cocky": "green lantern standing confidently, glowing green aura"
+  "bird": {
+   "clip": "9a1NskAZS0w",
+   "from": 43.6,
+   "beats": 3
+  },
+  "cocky": {
+   "clip": "9a1NskAZS0w",
+   "from": 59.9
+  }
  },
  "montage_queries": [
   "green lantern john stewart fighting with green energy",
@@ -127,5 +134,7 @@
   "a man in a green lantern suit landing on the ground",
   "green energy shield blocking an explosion",
   "green lantern charging his ring at the lantern battery"
- ]
+ ],
+ "lyrics_from": 116.6,
+ "end_at": 130.55
 }

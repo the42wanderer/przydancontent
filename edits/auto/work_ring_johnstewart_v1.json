@@ -1,12 +1,12 @@
 {
  "audio": "../../songs/work.mp3",
- "start": 26.12,
- "end": 48.483,
+ "start": 108.4,
+ "end": 130.55,
  "sources": "../../data/clips_lanterns",
  "boxes": "../boxes_lanterns.json",
  "slots": [
   {
-   "at": 26.12,
+   "at": 108.4,
    "clip": "-jC32AIIn14",
    "from": 194.45,
    "fx": [],
@@ -19,7 +19,7 @@
    ]
   },
   {
-   "at": 26.78,
+   "at": 109.06,
    "clip": "-jC32AIIn14",
    "from": 195.11,
    "fx": [],
@@ -32,7 +32,7 @@
    ]
   },
   {
-   "at": 30.7,
+   "at": 112.98,
    "clip": "-jC32AIIn14",
    "from": 199.03,
    "fx": [],
@@ -45,7 +45,7 @@
    ]
   },
   {
-   "at": 34.319,
+   "at": 116.611,
    "clip": "yx61t5cs1jw",
    "from": 8.38,
    "fx": [
@@ -55,593 +55,557 @@
    "note": "a green lantern ring glowing bright green on a fist"
   },
   {
-   "at": 34.737,
+   "at": 117.029,
    "clip": "5KfIKmkWzgg",
    "from": 1334.4,
    "fx": [],
    "note": "animated green lantern john stewart from the justice league cartoon"
   },
   {
-   "at": 35.178,
+   "at": 117.47,
    "clip": "hBdwYLLKW5o",
    "from": 214.05,
    "fx": [],
    "note": "green lantern charging his ring at the lantern battery"
   },
   {
-   "at": 35.619,
+   "at": 117.888,
    "clip": "5KfIKmkWzgg",
    "from": 87.53,
    "fx": [],
    "note": "green lantern charging his ring at the lantern battery"
   },
   {
-   "at": 36.061,
+   "at": 118.329,
    "clip": "hBdwYLLKW5o",
    "from": 134.13,
    "fx": [],
    "note": "green lantern flying through space"
   },
   {
-   "at": 36.479,
+   "at": 118.747,
    "clip": "EsKGSrRwJpw",
    "from": 4.6,
    "fx": [],
    "note": "green lantern john stewart fighting with green energy"
   },
   {
-   "at": 36.897,
+   "at": 119.188,
    "clip": "5KfIKmkWzgg",
    "from": 753.9,
    "fx": [],
    "note": "green energy shield blocking an explosion"
   },
   {
-   "at": 37.314,
+   "at": 119.606,
    "clip": "hBdwYLLKW5o",
-   "from": 186.31,
+   "from": 187.73,
+   "fx": [],
+   "note": "green lantern john stewart fighting with green energy"
+  },
+  {
+   "at": 120.047,
+   "clip": "yx61t5cs1jw",
+   "from": 0.88,
    "fx": [
     "punch"
    ],
    "note": "john stewart in a green lantern suit with glowing green eyes"
   },
   {
-   "at": 38.197,
+   "at": 120.906,
    "clip": "5KfIKmkWzgg",
    "from": 1081.33,
-   "fx": [],
-   "note": "green lantern john stewart fighting with green energy"
-  },
-  {
-   "at": 38.615,
-   "clip": "hBdwYLLKW5o",
-   "from": 229.69,
-   "fx": [],
-   "note": "close up of a man with glowing green eyes"
-  },
-  {
-   "at": 39.056,
-   "clip": "5KfIKmkWzgg",
-   "from": 1333.77,
    "fx": [],
    "note": "green lantern flying through space"
   },
   {
-   "at": 39.474,
+   "at": 121.324,
    "clip": "hBdwYLLKW5o",
    "from": 141.68,
    "fx": [],
    "note": "animated green lantern john stewart from the justice league cartoon"
   },
   {
-   "at": 39.915,
+   "at": 121.765,
    "clip": "5KfIKmkWzgg",
    "from": 1142.43,
    "fx": [],
    "note": "green lantern john stewart fighting with green energy"
   },
   {
-   "at": 40.333,
+   "at": 122.207,
+   "clip": "EsKGSrRwJpw",
+   "from": 1.0,
+   "fx": [],
+   "note": "green lantern john stewart fighting with green energy"
+  },
+  {
+   "at": 122.625,
    "clip": "hBdwYLLKW5o",
-   "from": 151.36,
+   "from": 67.69,
    "fx": [
     "punch"
    ],
    "note": "green lantern punching an enemy with a glowing green energy fist"
   },
   {
-   "at": 41.192,
-   "clip": "yx61t5cs1jw",
-   "from": 30.16,
+   "at": 123.46,
+   "clip": "5KfIKmkWzgg",
+   "from": 1272.57,
+   "fx": [],
+   "note": "green lantern flying through space"
+  },
+  {
+   "at": 123.878,
+   "clip": "hBdwYLLKW5o",
+   "from": 130.76,
    "fx": [],
    "note": "green lantern john stewart fighting with green energy"
   },
   {
-   "at": 41.61,
-   "clip": "EsKGSrRwJpw",
-   "from": 6.52,
+   "at": 124.32,
+   "clip": "yx61t5cs1jw",
+   "from": 43.59,
    "fx": [],
-   "note": "green energy shield blocking an explosion"
+   "note": "green lantern charging his ring at the lantern battery"
   },
   {
-   "at": 42.051,
+   "at": 124.738,
+   "clip": "EsKGSrRwJpw",
+   "from": 15.6,
+   "fx": [],
+   "note": "green lantern flying through space"
+  },
+  {
+   "at": 125.156,
+   "clip": "yx61t5cs1jw",
+   "from": 53.01,
+   "fx": [],
+   "note": "green lantern flying through space"
+  },
+  {
+   "at": 125.597,
+   "clip": "DGmaNC-E9MU",
+   "from": 899.57,
+   "fx": [],
+   "note": "close up of a man with glowing green eyes"
+  },
+  {
+   "at": 126.038,
    "clip": "yx61t5cs1jw",
    "from": 76.66,
    "fx": [],
    "note": "green energy shield blocking an explosion"
   },
   {
-   "at": 42.469,
+   "at": 126.479,
    "clip": "EsKGSrRwJpw",
-   "from": 7.24,
-   "fx": [],
-   "note": "green lantern flying through space"
-  },
-  {
-   "at": 42.887,
-   "clip": "yx61t5cs1jw",
-   "from": 75.33,
-   "fx": [],
-   "note": "green lantern charging his ring at the lantern battery"
-  },
-  {
-   "at": 43.305,
-   "clip": "EsKGSrRwJpw",
-   "from": 22.34,
-   "fx": [],
-   "note": "a man in a green lantern suit landing on the ground"
-  },
-  {
-   "at": 43.746,
-   "clip": "yx61t5cs1jw",
-   "from": 7.47,
-   "fx": [],
-   "note": "green lantern flying through space"
-  },
-  {
-   "at": 44.188,
-   "clip": "EsKGSrRwJpw",
-   "from": 4.2,
+   "from": 6.52,
    "fx": [
     "punch"
    ],
    "note": "green lantern creating a giant green energy construct"
   },
   {
-   "at": 45.047,
+   "at": 127.338,
    "clip": "yx61t5cs1jw",
-   "from": 30.49,
-   "fx": [],
-   "note": "green lantern john stewart fighting with green energy"
-  },
-  {
-   "at": 45.465,
-   "clip": "EsKGSrRwJpw",
-   "from": 1.0,
+   "from": 30.16,
    "fx": [],
    "note": "animated green lantern john stewart from the justice league cartoon"
   },
   {
-   "at": 45.906,
+   "at": 127.756,
    "clip": "DGmaNC-E9MU",
    "from": 56.03,
    "fx": [],
    "note": "close up of a man with glowing green eyes"
   },
   {
-   "at": 46.324,
-   "clip": "tv0tGPs7Vrs",
-   "from": 394.0,
+   "at": 128.197,
+   "clip": "EsKGSrRwJpw",
+   "from": 26.72,
+   "fx": [],
+   "note": "a man in a green lantern suit landing on the ground"
+  },
+  {
+   "at": 128.615,
+   "clip": "9a1NskAZS0w",
+   "from": 43.6,
    "fx": [
     "punch"
    ],
-   "note": "green lantern flying through the sky glowing green"
+   "note": "fixed"
   },
   {
-   "at": 47.183,
-   "clip": "DGmaNC-E9MU",
-   "from": 786.82,
-   "fx": [],
-   "note": "green energy shield blocking an explosion"
-  },
-  {
-   "at": 47.601,
-   "clip": "tv0tGPs7Vrs",
-   "from": 242.2,
-   "fx": [],
-   "note": "green lantern flying through space"
-  },
-  {
-   "at": 48.042,
-   "clip": "DGmaNC-E9MU",
-   "from": 1145.54,
+   "at": 129.892,
+   "clip": "9a1NskAZS0w",
+   "from": 59.9,
    "fx": [
     "punch"
    ],
-   "note": "green lantern standing confidently, glowing green aura"
+   "note": "fixed"
   }
  ],
  "flashes": [
-  34.319,
-  34.737,
-  35.178,
-  35.619,
-  36.061,
-  37.314,
-  37.756,
-  39.474,
-  40.333,
-  41.192,
-  42.887,
-  44.188,
-  44.629,
-  46.324,
-  48.042
+  116.611,
+  117.029,
+  117.47,
+  117.888,
+  118.329,
+  120.047,
+  121.765,
+  122.625,
+  123.46,
+  125.156,
+  126.479,
+  126.897,
+  128.615,
+  129.892
  ],
  "text_style": "brat",
  "text_fg": "white",
  "texts": [
   {
    "text": "the big blue bosses",
-   "from": 26.21,
-   "to": 27.13,
+   "from": 108.49,
+   "to": 109.41,
    "size": 80,
    "y": "h*0.64"
   },
   {
    "text": "may think that you're hot shit",
-   "from": 27.13,
-   "to": 28.67,
+   "from": 109.41,
+   "to": 110.95,
    "size": 80,
    "y": "h*0.64"
   },
   {
    "text": "but you're just a",
-   "from": 28.67,
-   "to": 29.33,
+   "from": 110.95,
+   "to": 111.61,
    "size": 80,
    "y": "h*0.64"
   },
   {
    "text": "f*cking substitute teacher",
-   "from": 29.33,
-   "to": 30.79,
+   "from": 111.61,
+   "to": 113.07,
    "size": 80,
    "y": "h*0.64"
   },
   {
    "text": "junior",
-   "from": 30.79,
-   "to": 31.57,
+   "from": 113.07,
+   "to": 113.85,
    "size": 80,
    "y": "h*0.64"
   },
   {
    "text": "you're not ready",
-   "from": 31.57,
-   "to": 31.99,
+   "from": 113.85,
+   "to": 114.27,
    "size": 80,
    "y": "h*0.64"
   },
   {
    "text": "to get up in front of the class",
-   "from": 31.99,
-   "to": 33.01,
+   "from": 114.27,
+   "to": 115.29,
    "size": 80,
    "y": "h*0.64"
   },
   {
    "text": "until the ring",
-   "from": 33.01,
-   "to": 33.67,
+   "from": 115.29,
+   "to": 115.95,
    "size": 80,
    "y": "h*0.64"
   },
   {
    "text": "says you are",
-   "from": 33.67,
-   "to": 34.06,
+   "from": 115.95,
+   "to": 116.55,
    "size": 80,
    "y": "h*0.64"
   },
   {
    "text": "move",
-   "from": 34.06,
-   "to": 34.42,
+   "from": 116.737,
+   "to": 116.974,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "your",
-   "from": 34.42,
-   "to": 34.62,
+   "from": 116.974,
+   "to": 117.211,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "body",
-   "from": 34.62,
-   "to": 35.04,
+   "from": 117.211,
+   "to": 117.449,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "move your",
-   "from": 35.04,
-   "to": 35.42,
+   "text": "move",
+   "from": 117.449,
+   "to": 117.686,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "your",
+   "from": 117.686,
+   "to": 117.923,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "body",
-   "from": 35.42,
-   "to": 35.76,
+   "from": 117.923,
+   "to": 118.16,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "i",
-   "from": 35.76,
-   "to": 36.04,
+   "text": "i just",
+   "from": 118.16,
+   "to": 118.54,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "just",
-   "from": 36.04,
-   "to": 36.287,
+   "text": "put this",
+   "from": 118.54,
+   "to": 119.0,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "put",
-   "from": 36.287,
-   "to": 36.533,
-   "size": 125,
-   "y": "h*0.64"
-  },
-  {
-   "text": "this",
-   "from": 36.533,
-   "to": 36.78,
-   "size": 125,
-   "y": "h*0.64"
-  },
-  {
-   "text": "bitch",
-   "from": 36.78,
-   "to": 37.027,
-   "size": 125,
-   "y": "h*0.64"
-  },
-  {
-   "text": "straight",
-   "from": 37.027,
-   "to": 37.273,
+   "text": "bitch straight",
+   "from": 119.0,
+   "to": 119.55,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "outta",
-   "from": 37.273,
-   "to": 37.52,
+   "from": 119.55,
+   "to": 119.9,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "work",
-   "from": 37.52,
-   "to": 37.74,
+   "from": 119.9,
+   "to": 120.18,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "no",
-   "from": 37.74,
-   "to": 38.0,
-   "size": 125,
-   "y": "h*0.64"
-  },
-  {
-   "text": "longer",
-   "from": 38.0,
-   "to": 38.48,
+   "text": "no longer",
+   "from": 120.18,
+   "to": 120.5,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "just ya",
-   "from": 38.48,
-   "to": 38.86,
+   "from": 120.5,
+   "to": 120.94,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "hobby how'd",
-   "from": 38.86,
-   "to": 39.24,
+   "from": 120.94,
+   "to": 121.38,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "you",
-   "from": 39.24,
-   "to": 39.58,
+   "text": "you know",
+   "from": 121.38,
+   "to": 121.82,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "know that",
-   "from": 39.58,
-   "to": 39.9,
+   "text": "that",
+   "from": 121.82,
+   "to": 122.047,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "shit gon",
-   "from": 39.9,
-   "to": 40.2,
+   "text": "shit",
+   "from": 122.047,
+   "to": 122.273,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "gon",
+   "from": 122.273,
+   "to": 122.5,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "hurt",
-   "from": 40.2,
-   "to": 40.38,
+   "from": 122.5,
+   "to": 122.68,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "cuz i",
-   "from": 40.38,
-   "to": 40.76,
+   "from": 122.68,
+   "to": 123.04,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "don't know",
-   "from": 40.76,
-   "to": 41.2,
+   "from": 123.04,
+   "to": 123.5,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "that this",
-   "from": 41.2,
-   "to": 41.6,
+   "from": 123.5,
+   "to": 123.92,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "ain't",
-   "from": 41.6,
-   "to": 41.9,
+   "from": 123.92,
+   "to": 124.18,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "just",
-   "from": 41.9,
-   "to": 42.38,
+   "from": 124.18,
+   "to": 124.607,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "your",
-   "from": 42.38,
-   "to": 42.86,
+   "from": 124.607,
+   "to": 125.033,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "poppy",
-   "from": 42.86,
-   "to": 43.34,
+   "from": 125.033,
+   "to": 125.46,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "and i",
-   "from": 43.34,
-   "to": 43.59,
+   "from": 125.46,
+   "to": 125.86,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "caught",
-   "from": 43.59,
-   "to": 43.82,
+   "from": 125.86,
+   "to": 126.1,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "that copy",
-   "from": 43.82,
-   "to": 44.64,
+   "text": "that",
+   "from": 126.1,
+   "to": 126.36,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "just",
-   "from": 44.64,
-   "to": 44.927,
+   "text": "copy",
+   "from": 126.36,
+   "to": 126.92,
    "size": 125,
    "y": "h*0.64"
   },
   {
-   "text": "before",
-   "from": 44.927,
-   "to": 45.213,
+   "text": "just before",
+   "from": 126.92,
+   "to": 127.26,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "i",
-   "from": 45.213,
-   "to": 45.5,
+   "from": 127.26,
+   "to": 127.56,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "turned it",
-   "from": 45.5,
-   "to": 45.54,
+   "from": 127.56,
+   "to": 127.82,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "into",
-   "from": 45.54,
-   "to": 45.9,
+   "from": 127.82,
+   "to": 128.16,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "a",
-   "from": 45.9,
-   "to": 46.22,
+   "from": 128.16,
+   "to": 128.52,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "bird",
-   "from": 46.22,
-   "to": 46.68,
+   "from": 128.52,
+   "to": 129.08,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "and it",
-   "from": 46.68,
-   "to": 47.0,
+   "from": 129.08,
+   "to": 129.28,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "got",
-   "from": 47.0,
-   "to": 47.48,
+   "from": 129.28,
+   "to": 129.51,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "too",
-   "from": 47.48,
-   "to": 47.96,
+   "from": 129.51,
+   "to": 129.74,
    "size": 125,
    "y": "h*0.64"
   },
   {
    "text": "cocky",
-   "from": 47.96,
-   "to": 48.44,
-   "size": 125,
-   "y": "h*0.64"
-  },
-  {
-   "text": "but",
-   "from": 48.44,
-   "to": 48.483,
+   "from": 129.74,
+   "to": 130.55,
    "size": 125,
    "y": "h*0.64"
   }
@@ -650,8 +614,8 @@
  "dialogue": {
   "audio": "../../data/dialogue/-jC32AIIn14.m4a",
   "from": 194.45,
-  "at": 26.12,
-  "to": 34.27,
+  "at": 108.4,
+  "to": 116.55,
   "duck": 0.3,
   "gain": 1.8
  }
