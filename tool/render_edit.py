@@ -11,10 +11,15 @@ Timeline format (times in song seconds):
   "flashes": [116.611, ...],
   "texts": [{"text": "PRZYDAN", "from": 113.3, "to": 116.5}],
   "flash_color": "white",
-  "dialogue": {"audio": "path/to/scene.m4a", "from": 41.2, "at": 22.5, "to": 34.27, "duck": 0.3, "gain": 1.8}
+  "dialogue": {"audio": "path/to/scene.m4a", "from": 41.2, "at": 22.5, "to": 34.27, "duck": 0.3, "gain": 1.8},
+  "fade_out": 1.0,
+  "end_card": {"from": 131.0, "text": "coming soon", "sub": "przydan - work", "color": "0x39ff5a"}
 }
 "dialogue" (optional) plays a film scene's own audio from "from" (seconds in that file) over song time
 "at".."to", with the song turned down to "duck" until "to" (usually the drop).
+"fade_out" (optional) fades picture and sound out over the last N seconds instead of a hard stop.
+"end_card" (optional) cuts to black at "from" and shows glitching text (flicker, jitter, RGB split, noise
+bars) until the end; with it, "fade_out" only fades the sound.
 Each slot runs until the next slot's "at" (the last one until "end").
 A slot's own "box" overrides the clip's box (e.g. to follow a speaker in a dialogue scene).
 fx: "punch" = zoom-in that settles over 0.3 s, "shake" = 0.4 s camera shake.
@@ -137,6 +142,29 @@ def main(timeline_path, out_path):
             look = f"box=1:boxcolor={bg}:boxborderw=22" if bg else "shadowcolor=black@0.55:shadowx=0:shadowy=5"
             texts.append(f"drawtext=fontfile={BRAT_FONT}:text='{txt.lower()}':fontsize={tx.get('size', 150)}"
                          f":fontcolor={fg}:{look}:x=(w-text_w)/2:y={y}:{on}")
+    card = tl.get("end_card")
+    if card:
+        a = card["from"] - t0
+        on = f"enable='between(t,{a:.3f},{dur:.3f})'"
+        c = card.get("color", "0x39ff5a")
+        post.append(f"drawbox=x=0:y=0:w=iw:h=ih:color=black:t=fill:{on}")
+        post.append(f"noise=alls=22:allf=t+u:{on}")
+        # glitch bars: rows of block characters (drawbox only places itself once, drawtext moves every frame)
+        for k in range(3):
+            texts.append(f"drawtext=fontfile={BRAT_FONT}:text='{'█' * 60}':fontsize={18 + 22 * k}:fontcolor={c}"
+                         f":alpha='if(lt(random(0),0.45),0,0.4)':x='-random(1)*200':y='h*random(2)':{on}")
+        flick = "alpha='if(lt(random(0),0.2),0.1,1)'"
+        jit = "if(lt(random(1),0.4),(random(2)-0.5)*180,0)"
+        jy = "(random(3)-0.5)*6"
+        big = card.get("size", 175)
+        txt = card["text"].lower().replace("'", "’")
+        # RGB split: green and magenta copies jitter on their own around the white text
+        for col, off in ((c, -20), ("0xff3df0", 20), (fg, 0)):
+            texts.append(f"drawtext=fontfile={BRAT_FONT}:text='{txt}':fontsize={big}:fontcolor={col}:{flick}"
+                         f":x='(w-text_w)/2+{off}+{jit}':y='(h-text_h)/2+{jy}':{on}")
+        if card.get("sub"):
+            texts.append(f"drawtext=fontfile={BRAT_FONT}:text='{card['sub'].lower()}':fontsize={big * 0.42:.0f}"
+                         f":fontcolor={fg}:{flick}:x='(w-text_w)/2+{jit}/3':y=(h+text_h)/2+{big * 0.6:.0f}:{on}")
     graph = f"[0:v]{','.join(post) or 'null'}[base]"
     if texts:
         # draw on a wider transparent layer, squeeze it to width (narrow brat letterforms), soften slightly
@@ -155,8 +183,16 @@ def main(timeline_path, out_path):
                   f";[song][dia]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.95:level=0[a]")
     else:
         graph += ";[1:a]anull[a]"
+    vout, aout = "[v]", "[a]"
+    if tl.get("fade_out"):
+        f = tl["fade_out"]
+        graph += f";[a]afade=t=out:st={dur - f:.3f}:d={f}[af]"
+        aout = "[af]"
+        if not card:
+            graph += f";[v]fade=t=out:st={dur - f:.3f}:d={f}[vf]"
+            vout = "[vf]"
     run(["ffmpeg", "-nostdin", "-v", "error", "-y", *inputs,
-         "-filter_complex", graph, "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+         "-filter_complex", graph, "-map", vout, "-map", aout, "-c:v", "libx264", "-preset", "medium", "-crf", "18",
          "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out_path])
     print("wrote", out_path)
 

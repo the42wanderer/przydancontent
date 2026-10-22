@@ -1,7 +1,7 @@
 {
  "audio": "../../songs/work.mp3",
  "start": 108.4,
- "end": 130.55,
+ "end": 132.6,
  "sources": "../../data/clips_lanterns",
  "boxes": "../boxes_lanterns.json",
  "slots": [
@@ -605,12 +605,19 @@
   {
    "text": "cocky",
    "from": 129.74,
-   "to": 130.55,
+   "to": 130.64,
    "size": 125,
    "y": "h*0.64"
   }
  ],
  "flash_color": "0x39ff5a",
+ "fade_out": 1.2,
+ "end_card": {
+  "from": 131.0,
+  "text": "coming soon",
+  "sub": "przydan - work",
+  "color": "0x39ff5a"
+ },
  "dialogue": {
   "audio": "../../data/dialogue/-jC32AIIn14.m4a",
   "from": 194.45,

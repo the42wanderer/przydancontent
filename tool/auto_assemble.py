@@ -197,6 +197,7 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
         "slots": slots, "flashes": flashes,
         "text_style": cfg.get("text_style", "brat"), "text_fg": cfg.get("text_fg", "white"),
         "texts": texts, "flash_color": cfg.get("flash_color", "white"),
+        **{k: cfg[k] for k in ("fade_out", "end_card") if cfg.get(k)},
     }
     if dia:
         first = texts[0]["from"] if texts else drop

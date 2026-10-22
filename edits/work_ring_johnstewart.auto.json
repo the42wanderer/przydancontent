@@ -136,5 +136,12 @@
   "green lantern charging his ring at the lantern battery"
  ],
  "lyrics_from": 116.6,
- "end_at": 130.55
+ "end_at": 132.6,
+ "fade_out": 1.2,
+ "end_card": {
+  "from": 131.0,
+  "text": "coming soon",
+  "sub": "przydan - work",
+  "color": "0x39ff5a"
+ }
 }
