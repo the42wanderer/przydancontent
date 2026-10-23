@@ -155,5 +155,87 @@
   "a cricket umpire in a pink shirt"
  ],
  "avoid_cut_percent": 15,
- "beats_per_cut": 2
+ "beats_per_cut": 2,
+ "strokes": [
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 986.66
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1003.97
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1146.7
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1198.96
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1238.08
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1243.86
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1309.19
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1347.08
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1369.78
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1392.88
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1460.59
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1467.95
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1502.3
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1509.96
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1538.66
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1580.16
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1619.73
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1627.18
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1662.28
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "t": 1668.28
+  }
+ ]
 }

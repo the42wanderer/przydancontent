@@ -21,6 +21,8 @@ Timeline format (times in song seconds):
 "end_card" (optional) cuts to black at "from" and shows glitching text (flicker, jitter, RGB split, noise
 bars) until the end; with it, "fade_out" only fades the sound.
 Each slot runs until the next slot's "at" (the last one until "end").
+A slot with "hit" (seconds into the slot) is a stroke: real speed until then, then a punch-in on
+"zoom_box" at "slow" speed (default 0.5) for the follow-through.
 A slot's own "box" overrides the clip's box (e.g. to follow a speaker in a dialogue scene).
 fx: "punch" = zoom-in that settles over 0.3 s, "shake" = 0.4 s camera shake.
 """
@@ -103,9 +105,24 @@ def main(timeline_path, out_path):
         frames = max(1, round(end * FPS) - round(s["at"] * FPS))
         part = os.path.join(tmp, f"{i:03d}.mp4")
         src = os.path.join(rel(tl["sources"]), s["clip"] + ".mp4")
+        box = pixel_box(s.get("box") or boxes.get(s["clip"]), src)
+        enc = ["-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18"]
+        if s.get("hit") is not None:
+            # stroke: real speed up to the contact, then punch in on the batsman and slow the follow-through
+            h, sp = s["hit"], s.get("slow", 0.5)
+            fa = max(1, round((s["at"] + h) * FPS) - round(s["at"] * FPS))
+            run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", str(s["from"]), "-i", src, "-t", f"{h + 0.2:.3f}",
+                 "-vf", segment_filter(box, [], h), "-frames:v", str(fa), *enc, part])
+            parts.append(part)
+            part = os.path.join(tmp, f"{i:03d}b.mp4")
+            zb = pixel_box(s.get("zoom_box") or [0.37, 0.02, 0.63, 0.66], src)
+            vf = f"setpts=(PTS-STARTPTS)/{sp}," + segment_filter(zb, ["punch"], dur - h)
+            run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", f"{s['from'] + h:.3f}", "-i", src,
+                 "-t", f"{(dur - h) * sp + 0.2:.3f}", "-vf", vf, "-frames:v", str(max(1, frames - fa)), *enc, part])
+            parts.append(part)
+            continue
         run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", str(s["from"]), "-i", src, "-t", f"{dur + 0.2:.3f}",
-             "-vf", segment_filter(pixel_box(s.get("box") or boxes.get(s["clip"]), src), s.get("fx", []), dur), "-frames:v", str(frames),
-             "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", part])
+             "-vf", segment_filter(box, s.get("fx", []), dur), "-frames:v", str(frames), *enc, part])
         parts.append(part)
     lst = os.path.join(tmp, "list.txt")
     open(lst, "w").write("".join(f"file '{p.replace(os.sep, '/')}'\n" for p in parts))
