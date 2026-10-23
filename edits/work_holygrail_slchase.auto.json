@@ -4,14 +4,14 @@
  "whisper": "../songs/work_whisper_words.json",
  "window": [
   100.0,
-  135.6
+  136.5
  ],
  "drop": 116.55,
  "lyrics_from": 116.6,
- "end_at": 135.6,
+ "end_at": 136.4,
  "fade_out": 1.4,
  "end_card": {
-  "from": 133.9,
+  "from": 134.75,
   "text": "coming soon",
   "sub": "przydan - work",
   "color": "0xffbe29",
@@ -247,6 +247,11 @@
    "text": "rathnayake 130"
   },
   {
+   "clip": "w8igWP-0-S0",
+   "from": 147.4,
+   "text": "avishka 97"
+  },
+  {
    "clip": "Nm7O9HWGdzg",
    "from": 18.6,
    "text": "shanaka 97"
@@ -261,5 +266,6 @@
    "from": 1615.15,
    "text": "430 chased"
   }
- ]
+ ],
+ "stroke_slow": 1.0
 }

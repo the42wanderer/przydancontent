@@ -1,7 +1,7 @@
 {
  "audio": "../../songs/work.mp3",
  "start": 102.35,
- "end": 135.6,
+ "end": 136.4,
  "sources": "../../data/clips_cricket",
  "boxes": "../boxes_cricket.json",
  "slots": [
@@ -54,7 +54,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1369.362,
    "hit": 0.418,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -63,7 +63,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1198.542,
    "hit": 0.418,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -72,7 +72,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1308.772,
    "hit": 0.418,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -90,7 +90,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1243.442,
    "hit": 0.418,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -99,7 +99,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1579.719,
    "hit": 0.441,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -117,7 +117,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1619.312,
    "hit": 0.418,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -126,7 +126,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1146.282,
    "hit": 0.418,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -135,7 +135,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1501.859,
    "hit": 0.441,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -144,7 +144,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 986.219,
    "hit": 0.441,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -153,7 +153,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1003.529,
    "hit": 0.441,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -162,7 +162,7 @@
    "clip": "DUb_zUiEiF4",
    "from": 1509.519,
    "hit": 0.441,
-   "slow": 0.5,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
@@ -193,40 +193,47 @@
   },
   {
    "at": 131.611,
+   "clip": "w8igWP-0-S0",
+   "from": 147.4,
+   "fx": [],
+   "note": "outro"
+  },
+  {
+   "at": 132.47,
    "clip": "Nm7O9HWGdzg",
    "from": 18.6,
    "fx": [],
    "note": "outro"
   },
   {
-   "at": 132.47,
+   "at": 133.329,
    "clip": "krfN7pOpMFE",
    "from": 127.0,
    "fx": [],
    "note": "outro"
   },
   {
-   "at": 133.329,
+   "at": 134.188,
    "clip": "DUb_zUiEiF4",
    "from": 1615.15,
    "fx": [],
    "note": "outro"
   },
   {
-   "at": 134.188,
+   "at": 135.047,
    "clip": "DUb_zUiEiF4",
-   "from": 1460.172,
-   "hit": 0.418,
-   "slow": 0.5,
+   "from": 1460.149,
+   "hit": 0.441,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   },
   {
-   "at": 135.047,
+   "at": 135.906,
    "clip": "DUb_zUiEiF4",
-   "from": 1667.839,
-   "hit": 0.441,
-   "slow": 0.5,
+   "from": 1667.862,
+   "hit": 0.418,
+   "slow": 1.0,
    "fx": [],
    "note": "stroke"
   }
@@ -579,31 +586,38 @@
    "to": 131.611
   },
   {
-   "text": "shanaka 97",
+   "text": "avishka 97",
    "from": 131.611,
    "size": 105,
    "y": "h*0.64",
    "to": 132.47
   },
   {
-   "text": "liyanage 61*",
+   "text": "shanaka 97",
    "from": 132.47,
    "size": 105,
    "y": "h*0.64",
    "to": 133.329
   },
   {
-   "text": "430 chased",
+   "text": "liyanage 61*",
    "from": 133.329,
    "size": 105,
    "y": "h*0.64",
-   "to": 133.9
+   "to": 134.188
+  },
+  {
+   "text": "430 chased",
+   "from": 134.188,
+   "size": 105,
+   "y": "h*0.64",
+   "to": 134.75
   }
  ],
  "flash_color": "0xffbe29",
  "fade_out": 1.4,
  "end_card": {
-  "from": 133.9,
+  "from": 134.75,
   "text": "coming soon",
   "sub": "przydan - work",
   "color": "0xffbe29",
