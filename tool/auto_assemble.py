@@ -10,7 +10,8 @@ Writes one timeline per variation to edits/auto/<name>_vN.json; --render also re
 "dialogue" (optional): {"clip", "audio", "words", "from", "to"} opens the edit with that film scene
 (source seconds from..to, its own audio and subtitles) so it ends right on the drop; the montage starts there.
 A list of such parts plays them back to back (e.g. several people talking), the last one ending on the drop.
-A part's "label" shows who is talking at the top of the frame.
+A part's "label" shows who is talking at the top of the frame. "flashes": false turns flash frames off.
+"outro": [{"clip", "from", "text"}] from song time "outro_at": a held shot per montage slot with its caption.
 "strokes": [{"clip", "t"}] (bat-on-ball times, see find_strokes.py) fill the montage slots after the drop:
 each lands its contact on a beat, flashes, punches in and slows down.
 An anchor can name an exact shot instead of a query: "bird": {"clip": "<id>", "from": 43.6, "beats": 3}
@@ -193,6 +194,7 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
     strokes = list(cfg.get("strokes", []))
     rng.shuffle(strokes)
     stroke_hits = []
+    outro, outro_texts = list(cfg.get("outro", [])), []
     if dia:
         # each scene runs unbroken, so its own audio stays in sync; the montage starts on the drop
         starts = [j for j in starts if j >= di]
@@ -218,6 +220,12 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
             picker.per_clip[q["clip"]] = picker.per_clip.get(q["clip"], 0) + 1
             slots.append({"at": round(grid[j], 3), "clip": q["clip"], "from": q["from"], "fx": fx, "note": "fixed"})
             continue
+        if outro and grid[j] >= cfg["outro_at"] - 0.05:
+            # roll call at the end: fixed shots with a caption each, no lyrics over them
+            o = outro.pop(0)
+            slots.append({"at": round(grid[j], 3), "clip": o["clip"], "from": o["from"], "fx": [], "note": "outro"})
+            outro_texts.append({"text": o["text"].lower(), "from": round(grid[j], 3), "size": 105, "y": "h*0.64"})
+            continue
         if j > di and strokes:
             # a stroke per montage slot: the bat meets the ball exactly on the next beat
             st = strokes.pop(0)
@@ -231,7 +239,13 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
         slots.append({"at": round(grid[j], 3), "clip": s["vid"], "from": round(s["start"], 2), "fx": fx, "note": q})
     flashes = sorted({round(grid[j], 3) for j in range(di, len(grid) - 1)
                       if j - di < 4 or (j - di) % 4 == 0 and not stroke_hits or j in hits} | set(stroke_hits))
+    if cfg.get("flashes") is False:
+        flashes = []
     texts = text_chunks(words, cfg.get("end_at", grid[-1]), set(cfg.get("big_words", [])))
+    if outro_texts:
+        ends = [t["from"] for t in outro_texts[1:]] + [cfg.get("end_card", {}).get("from", cfg.get("end_at", grid[-1]))]
+        texts = [dict(t, to=min(t["to"], cfg["outro_at"])) for t in texts if t["from"] < cfg["outro_at"]]
+        texts += [dict(t, to=round(e, 3)) for t, e in zip(outro_texts, ends)]
     tl = {
         "audio": cfg["song"], "start": round(start if dia else grid[0], 3), "end": round(cfg.get("end_at", grid[-1]), 3),
         "sources": cfg["sources"], "boxes": cfg["boxes"],

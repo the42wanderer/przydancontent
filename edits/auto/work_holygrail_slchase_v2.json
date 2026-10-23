@@ -1,7 +1,7 @@
 {
  "audio": "../../songs/work.mp3",
  "start": 102.35,
- "end": 132.1,
+ "end": 135.6,
  "sources": "../../data/clips_cricket",
  "boxes": "../boxes_cricket.json",
  "slots": [
@@ -183,28 +183,55 @@
     "punch"
    ],
    "note": "fixed"
+  },
+  {
+   "at": 130.775,
+   "clip": "-pWguXdESgg",
+   "from": 81.0,
+   "fx": [],
+   "note": "outro"
+  },
+  {
+   "at": 131.611,
+   "clip": "Nm7O9HWGdzg",
+   "from": 18.6,
+   "fx": [],
+   "note": "outro"
+  },
+  {
+   "at": 132.47,
+   "clip": "krfN7pOpMFE",
+   "from": 127.0,
+   "fx": [],
+   "note": "outro"
+  },
+  {
+   "at": 133.329,
+   "clip": "DUb_zUiEiF4",
+   "from": 1615.15,
+   "fx": [],
+   "note": "outro"
+  },
+  {
+   "at": 134.188,
+   "clip": "DUb_zUiEiF4",
+   "from": 1237.662,
+   "hit": 0.418,
+   "slow": 0.5,
+   "fx": [],
+   "note": "stroke"
+  },
+  {
+   "at": 135.047,
+   "clip": "DUb_zUiEiF4",
+   "from": 1460.149,
+   "hit": 0.441,
+   "slow": 0.5,
+   "fx": [],
+   "note": "stroke"
   }
  ],
- "flashes": [
-  116.611,
-  117.029,
-  117.47,
-  117.888,
-  118.747,
-  119.606,
-  120.047,
-  121.324,
-  122.207,
-  122.625,
-  123.878,
-  124.738,
-  125.597,
-  126.479,
-  127.338,
-  128.197,
-  128.615,
-  129.892
- ],
+ "flashes": [],
  "text_style": "brat",
  "text_fg": "white",
  "texts": [
@@ -543,12 +570,40 @@
    "to": 130.5,
    "size": 125,
    "y": "h*0.64"
+  },
+  {
+   "text": "rathnayake 130",
+   "from": 130.775,
+   "size": 105,
+   "y": "h*0.64",
+   "to": 131.611
+  },
+  {
+   "text": "shanaka 97",
+   "from": 131.611,
+   "size": 105,
+   "y": "h*0.64",
+   "to": 132.47
+  },
+  {
+   "text": "liyanage 61*",
+   "from": 132.47,
+   "size": 105,
+   "y": "h*0.64",
+   "to": 133.329
+  },
+  {
+   "text": "430 chased",
+   "from": 133.329,
+   "size": 105,
+   "y": "h*0.64",
+   "to": 133.9
   }
  ],
  "flash_color": "0xffbe29",
  "fade_out": 1.4,
  "end_card": {
-  "from": 130.5,
+  "from": 133.9,
   "text": "coming soon",
   "sub": "przydan - work",
   "color": "0xffbe29",

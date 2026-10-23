@@ -21,8 +21,8 @@ Timeline format (times in song seconds):
 "end_card" (optional) cuts to black at "from" and shows glitching text (flicker, jitter, RGB split, noise
 bars) until the end; with it, "fade_out" only fades the sound.
 Each slot runs until the next slot's "at" (the last one until "end").
-A slot with "hit" (seconds into the slot) is a stroke: real speed until then, then a punch-in on
-"zoom_box" at "slow" speed (default 0.5) for the follow-through.
+A slot with "hit" (seconds into the slot) is a stroke: real speed until then, then the follow-through at
+"slow" speed (default 0.5) with a gentle creep-in of "zoom" (default 0.12) on the same framing.
 A slot's own "box" overrides the clip's box (e.g. to follow a speaker in a dialogue scene).
 fx: "punch" = zoom-in that settles over 0.3 s, "shake" = 0.4 s camera shake.
 """
@@ -115,8 +115,11 @@ def main(timeline_path, out_path):
                  "-vf", segment_filter(box, [], h), "-frames:v", str(fa), *enc, part])
             parts.append(part)
             part = os.path.join(tmp, f"{i:03d}b.mp4")
-            zb = pixel_box(s.get("zoom_box") or [0.37, 0.02, 0.63, 0.66], src)
-            vf = f"setpts=(PTS-STARTPTS)/{sp}," + segment_filter(zb, ["punch"], dur - h)
+            # same framing as the delivery, then a slow creep in (never a jump), so the ball stays in shot
+            n = max(1, frames - fa)
+            z = s.get("zoom", 0.12)
+            vf = (f"setpts=(PTS-STARTPTS)/{sp}," + segment_filter(box, [], dur - h)
+                  + f",zoompan=z='1+{z}*on/{n}':x='iw/2-iw/zoom/2':y='(ih-ih/zoom)*0.4':d=1:s={W}x{H}:fps={FPS}")
             run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", f"{s['from'] + h:.3f}", "-i", src,
                  "-t", f"{(dur - h) * sp + 0.2:.3f}", "-vf", vf, "-frames:v", str(max(1, frames - fa)), *enc, part])
             parts.append(part)
