@@ -1,0 +1,159 @@
+{
+ "song": "../songs/work.mp3",
+ "lyrics": "../songs/work_lyrics.txt",
+ "whisper": "../songs/work_whisper_words.json",
+ "window": [
+  100.0,
+  130.6
+ ],
+ "drop": 116.55,
+ "lyrics_from": 116.6,
+ "end_at": 132.1,
+ "fade_out": 1.4,
+ "end_card": {
+  "from": 130.5,
+  "text": "coming soon",
+  "sub": "przydan - work",
+  "color": "0xffbe29",
+  "color2": "0x8d153a"
+ },
+ "sources": "../data/clips_cricket",
+ "boxes": "boxes_cricket.json",
+ "index": "../data/index_cricket_pool",
+ "variations": 3,
+ "text_style": "brat",
+ "text_fg": "white",
+ "flash_color": "0xffbe29",
+ "duck": 0.25,
+ "sub_size": 95,
+ "big_words": [
+  "work",
+  "body",
+  "hurt",
+  "bird",
+  "cocky"
+ ],
+ "dialogue": [
+  {
+   "clip": "DUb_zUiEiF4",
+   "audio": "../data/dialogue_cricket/DUb_zUiEiF4.m4a",
+   "from": 797.6,
+   "to": 800.4,
+   "gain": 2.4,
+   "subs": [
+    {
+     "from": 797.6,
+     "text": "england made 429"
+    },
+    {
+     "from": 799.0,
+     "text": "brook hit 202"
+    }
+   ]
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "audio": "../data/dialogue_cricket/DUb_zUiEiF4.m4a",
+   "from": 1684.9,
+   "to": 1689.0,
+   "gain": 2.4,
+   "subs": [
+    {
+     "from": 1684.9,
+     "text": "two wickets. two balls."
+    },
+    {
+     "from": 1687.3,
+     "text": "is this the twist?"
+    }
+   ]
+  },
+  {
+   "clip": "DUb_zUiEiF4",
+   "audio": "../data/dialogue_cricket/DUb_zUiEiF4.m4a",
+   "from": 1717.5,
+   "to": 1724.8,
+   "gain": 2.4,
+   "shots": [
+    {
+     "from": 1699.5,
+     "offset": 0.0
+    },
+    {
+     "from": 1719.6,
+     "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "subs": [
+    {
+     "from": 1717.5,
+     "text": "6 needed. 2 balls."
+    },
+    {
+     "from": 1720.6,
+     "text": "hit hard"
+    },
+    {
+     "from": 1721.3,
+     "text": "hit high"
+    },
+    {
+     "from": 1723.9,
+     "text": "has it gone?"
+    }
+   ]
+  }
+ ],
+ "min_brightness": 25,
+ "max_brightness": 175,
+ "max_per_clip": 40,
+ "caption_cut_percent": 25,
+ "character": "a sri lanka cricket player in a navy blue and yellow jersey",
+ "character_cut_percentile": 10,
+ "drop_query": {
+  "clip": "DUb_zUiEiF4",
+  "from": 1727.0
+ },
+ "anchors": {
+  "work": {
+   "clip": "DUb_zUiEiF4",
+   "from": 1729.0
+  },
+  "hurt": {
+   "clip": "DUb_zUiEiF4",
+   "from": 1735.0
+  },
+  "copy": {
+   "clip": "DUb_zUiEiF4",
+   "from": 1302.5
+  },
+  "bird": {
+   "clip": "DUb_zUiEiF4",
+   "from": 1752.4,
+   "beats": 3
+  },
+  "cocky": {
+   "clip": "DUb_zUiEiF4",
+   "from": 1747.3
+  }
+ },
+ "montage_queries": [
+  "sri lanka cricket players celebrating together",
+  "players hugging on a cricket field",
+  "the sri lanka dressing room jumping and cheering",
+  "sri lanka players running onto the field",
+  "a batsman raising his bat to the crowd",
+  "cricket fans cheering in the stands at night"
+ ],
+ "avoid": [
+  "an england cricket player in a light blue jersey",
+  "a cricket umpire in a pink shirt"
+ ],
+ "avoid_cut_percent": 15,
+ "beats_per_cut": 2
+}

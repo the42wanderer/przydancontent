@@ -159,7 +159,7 @@ def main(timeline_path, out_path):
         big = card.get("size", 175)
         txt = card["text"].lower().replace("'", "’")
         # RGB split: green and magenta copies jitter on their own around the white text
-        for col, off in ((c, -20), ("0xff3df0", 20), (fg, 0)):
+        for col, off in ((c, -20), (card.get("color2", "0xff3df0"), 20), (fg, 0)):
             texts.append(f"drawtext=fontfile={BRAT_FONT}:text='{txt}':fontsize={big}:fontcolor={col}:{flick}"
                          f":x='(w-text_w)/2+{off}+{jit}':y='(h-text_h)/2+{jy}':{on}")
         if card.get("sub"):

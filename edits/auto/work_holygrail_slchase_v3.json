@@ -1,0 +1,557 @@
+{
+ "audio": "../../songs/work.mp3",
+ "start": 102.35,
+ "end": 132.1,
+ "sources": "../../data/clips_cricket",
+ "boxes": "../boxes_cricket.json",
+ "slots": [
+  {
+   "at": 102.35,
+   "clip": "DUb_zUiEiF4",
+   "from": 797.6,
+   "fx": [],
+   "note": "dialogue"
+  },
+  {
+   "at": 105.15,
+   "clip": "DUb_zUiEiF4",
+   "from": 1684.9,
+   "fx": [],
+   "note": "dialogue"
+  },
+  {
+   "at": 109.25,
+   "clip": "DUb_zUiEiF4",
+   "from": 1699.5,
+   "fx": [],
+   "note": "dialogue"
+  },
+  {
+   "at": 111.35,
+   "clip": "DUb_zUiEiF4",
+   "from": 1719.6,
+   "fx": [],
+   "note": "dialogue",
+   "box": [
+    0.0,
+    0.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "at": 116.611,
+   "clip": "DUb_zUiEiF4",
+   "from": 1727.0,
+   "fx": [
+    "punch",
+    "shake"
+   ],
+   "note": "fixed"
+  },
+  {
+   "at": 117.47,
+   "clip": "celebrate",
+   "from": 46.12,
+   "fx": [],
+   "note": "players hugging on a cricket field"
+  },
+  {
+   "at": 118.329,
+   "clip": "ton",
+   "from": 2.24,
+   "fx": [],
+   "note": "players hugging on a cricket field"
+  },
+  {
+   "at": 119.188,
+   "clip": "celebrate",
+   "from": 34.4,
+   "fx": [],
+   "note": "a batsman raising his bat to the crowd"
+  },
+  {
+   "at": 120.047,
+   "clip": "DUb_zUiEiF4",
+   "from": 1729.0,
+   "fx": [
+    "punch"
+   ],
+   "note": "fixed"
+  },
+  {
+   "at": 120.906,
+   "clip": "celebrate",
+   "from": 26.76,
+   "fx": [],
+   "note": "a batsman raising his bat to the crowd"
+  },
+  {
+   "at": 121.765,
+   "clip": "celebrate",
+   "from": 46.12,
+   "fx": [],
+   "note": "sri lanka cricket players celebrating together"
+  },
+  {
+   "at": 122.625,
+   "clip": "DUb_zUiEiF4",
+   "from": 1735.0,
+   "fx": [
+    "punch"
+   ],
+   "note": "fixed"
+  },
+  {
+   "at": 123.46,
+   "clip": "celebrate",
+   "from": 33.8,
+   "fx": [],
+   "note": "sri lanka players running onto the field"
+  },
+  {
+   "at": 124.32,
+   "clip": "ton",
+   "from": 4.47,
+   "fx": [],
+   "note": "players hugging on a cricket field"
+  },
+  {
+   "at": 125.156,
+   "clip": "celebrate",
+   "from": 31.16,
+   "fx": [],
+   "note": "cricket fans cheering in the stands at night"
+  },
+  {
+   "at": 126.038,
+   "clip": "ton",
+   "from": 0.0,
+   "fx": [],
+   "note": "a batsman raising his bat to the crowd"
+  },
+  {
+   "at": 126.897,
+   "clip": "celebrate",
+   "from": 5.95,
+   "fx": [],
+   "note": "cricket fans cheering in the stands at night"
+  },
+  {
+   "at": 127.756,
+   "clip": "ton",
+   "from": 0.0,
+   "fx": [],
+   "note": "players hugging on a cricket field"
+  },
+  {
+   "at": 128.615,
+   "clip": "DUb_zUiEiF4",
+   "from": 1752.4,
+   "fx": [
+    "punch"
+   ],
+   "note": "fixed"
+  },
+  {
+   "at": 129.892,
+   "clip": "DUb_zUiEiF4",
+   "from": 1747.3,
+   "fx": [
+    "punch"
+   ],
+   "note": "fixed"
+  }
+ ],
+ "flashes": [
+  116.611,
+  117.029,
+  117.47,
+  117.888,
+  118.329,
+  120.047,
+  121.765,
+  122.625,
+  123.46,
+  125.156,
+  126.479,
+  126.897,
+  128.615,
+  129.892
+ ],
+ "text_style": "brat",
+ "text_fg": "white",
+ "texts": [
+  {
+   "text": "england made 429",
+   "from": 102.35,
+   "to": 103.75,
+   "size": 95,
+   "y": "h*0.64"
+  },
+  {
+   "text": "brook hit 202",
+   "from": 103.75,
+   "to": 105.15,
+   "size": 95,
+   "y": "h*0.64"
+  },
+  {
+   "text": "two wickets. two balls.",
+   "from": 105.15,
+   "to": 107.55,
+   "size": 95,
+   "y": "h*0.64"
+  },
+  {
+   "text": "is this the twist?",
+   "from": 107.55,
+   "to": 109.25,
+   "size": 95,
+   "y": "h*0.64"
+  },
+  {
+   "text": "6 needed. 2 balls.",
+   "from": 109.25,
+   "to": 112.35,
+   "size": 95,
+   "y": "h*0.64"
+  },
+  {
+   "text": "hit hard",
+   "from": 112.35,
+   "to": 113.05,
+   "size": 95,
+   "y": "h*0.64"
+  },
+  {
+   "text": "hit high",
+   "from": 113.05,
+   "to": 115.65,
+   "size": 95,
+   "y": "h*0.64"
+  },
+  {
+   "text": "has it gone?",
+   "from": 115.65,
+   "to": 116.55,
+   "size": 95,
+   "y": "h*0.64"
+  },
+  {
+   "text": "move",
+   "from": 116.737,
+   "to": 116.974,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "your",
+   "from": 116.974,
+   "to": 117.211,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "body",
+   "from": 117.211,
+   "to": 117.449,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "move",
+   "from": 117.449,
+   "to": 117.686,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "your",
+   "from": 117.686,
+   "to": 117.923,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "body",
+   "from": 117.923,
+   "to": 118.16,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "i just",
+   "from": 118.16,
+   "to": 118.54,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "put this",
+   "from": 118.54,
+   "to": 119.0,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "bitch straight",
+   "from": 119.0,
+   "to": 119.55,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "outta",
+   "from": 119.55,
+   "to": 119.9,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "work",
+   "from": 119.9,
+   "to": 120.18,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "no longer",
+   "from": 120.18,
+   "to": 120.5,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "just ya",
+   "from": 120.5,
+   "to": 120.94,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "hobby how'd",
+   "from": 120.94,
+   "to": 121.38,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "you know",
+   "from": 121.38,
+   "to": 121.82,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "that",
+   "from": 121.82,
+   "to": 122.047,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "shit",
+   "from": 122.047,
+   "to": 122.273,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "gon",
+   "from": 122.273,
+   "to": 122.5,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "hurt",
+   "from": 122.5,
+   "to": 122.68,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "cuz i",
+   "from": 122.68,
+   "to": 123.04,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "don't know",
+   "from": 123.04,
+   "to": 123.5,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "that this",
+   "from": 123.5,
+   "to": 123.92,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "ain't",
+   "from": 123.92,
+   "to": 124.18,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "just",
+   "from": 124.18,
+   "to": 124.607,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "your",
+   "from": 124.607,
+   "to": 125.033,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "poppy",
+   "from": 125.033,
+   "to": 125.46,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "and i",
+   "from": 125.46,
+   "to": 125.86,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "caught",
+   "from": 125.86,
+   "to": 126.1,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "that",
+   "from": 126.1,
+   "to": 126.36,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "copy",
+   "from": 126.36,
+   "to": 126.92,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "just before",
+   "from": 126.92,
+   "to": 127.26,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "i",
+   "from": 127.26,
+   "to": 127.56,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "turned it",
+   "from": 127.56,
+   "to": 127.82,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "into",
+   "from": 127.82,
+   "to": 128.16,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "a",
+   "from": 128.16,
+   "to": 128.52,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "bird",
+   "from": 128.52,
+   "to": 129.08,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "and it",
+   "from": 129.08,
+   "to": 129.28,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "got",
+   "from": 129.28,
+   "to": 129.51,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "too",
+   "from": 129.51,
+   "to": 129.74,
+   "size": 125,
+   "y": "h*0.64"
+  },
+  {
+   "text": "cocky",
+   "from": 129.74,
+   "to": 130.5,
+   "size": 125,
+   "y": "h*0.64"
+  }
+ ],
+ "flash_color": "0xffbe29",
+ "fade_out": 1.4,
+ "end_card": {
+  "from": 130.5,
+  "text": "coming soon",
+  "sub": "przydan - work",
+  "color": "0xffbe29",
+  "color2": "0x8d153a"
+ },
+ "dialogue": [
+  {
+   "audio": "../../data/dialogue_cricket/DUb_zUiEiF4.m4a",
+   "from": 797.6,
+   "at": 102.35,
+   "to": 105.15,
+   "duck": 0.25,
+   "gain": 2.4
+  },
+  {
+   "audio": "../../data/dialogue_cricket/DUb_zUiEiF4.m4a",
+   "from": 1684.9,
+   "at": 105.15,
+   "to": 109.25,
+   "duck": 0.25,
+   "gain": 2.4
+  },
+  {
+   "audio": "../../data/dialogue_cricket/DUb_zUiEiF4.m4a",
+   "from": 1717.5,
+   "at": 109.25,
+   "to": 116.55,
+   "duck": 0.25,
+   "gain": 2.4
+  }
+ ]
+}

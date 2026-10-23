@@ -118,6 +118,14 @@ Decided 2026-10-22. The artist wanted a completely different direction. The "sur
 - **Pipeline:** `dialogue` can be a list of parts (each with its own audio, crops, subs, `gain` and a `label` name tag); `duck` sets the song level under them; lyrics stop at the end card.
 - **Lessons:** exclude reposted-TikTok compilations and news clips with banners (their captions leak in), raise `caption_cut_percent` to about 45 for commentary footage, level each voice on its own (YouTube voices ranged -17 to -23 dB), and skip shots with real campaign signs. Use whole-file audio downloads; `--download-sections` streams at real time.
 
+## Edit 4: Work x Sri Lanka's 430 chase ("has it gone?")
+
+Decided 2026-10-23, the day after the match. Sri Lanka chased England's 429/4 in Rawalpindi (Brook 202), their highest ODI chase and the second-highest ever, won by Liyanage's six off the second-last ball. The artist is Sri Lankan (Colombo/Melbourne), so this also aims at a home audience.
+
+- **Research:** Cricinfo ball-by-ball and report (its JSON API is blocked; the report has the narrative). Reddit was blocked for both browser and fetch, so it isn't used. Viral sports edits on YouTube Shorts (Kohli 5.6M, Ja Morant 2.4M, Stokes 1.4M) cut only 0.2-0.7 times a second, follow one hero and tell a story in on-screen text ("until this man came").
+- **The edit** (`edits/work_holygrail_slchase.auto.json`, source: PCB full highlights `DUb_zUiEiF4`): story parts with the real commentary (Brook's 200; "that's two in two, is this the twist?"; the dressing room in suspense; "hit hard, hit high, has it gone?"), then the holy grail drop on "It has". After it, shots held for 2 beats, from the celebration (`celebrate.mp4`) and Rathnayake's hundred (`ton.mp4`) only, plus the replay of the six on "bird" and an England player on "cocky". Gold flashes, gold/maroon end card. v1 is the best.
+- **Pipeline:** `beats_per_cut` (montage pace after the drop), `avoid` queries (drop shots like the other team or umpires), shot `offset` for cutaways inside a dialogue part, and the end card's `color2`. For sport, index only the shots you want (the chase, the celebration) rather than the whole match.
+
 ## Next steps
 
 1. On the PC: fetch the YouTube scenepacks, rebuild the index (`index_shots.py`, `clip_embed.py`), re-run the auto-assembler for 4K-sourced Batman edits.

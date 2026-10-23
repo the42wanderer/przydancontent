@@ -13,7 +13,8 @@ A list of such parts plays them back to back (e.g. several people talking), the 
 A part's "label" shows who is talking at the top of the frame.
 An anchor can name an exact shot instead of a query: "bird": {"clip": "<id>", "from": 43.6, "beats": 3}
 ("beats" = how long it holds, default 2). "end_at" (song seconds) lets the last shot run past the last beat.
-Optional "shots": [{"from", "box"}] crops each of the scene's own shots on its speaker, and "subs":
+Optional "shots": [{"from", "box", "offset"?}] crops each of the scene's own shots on its speaker (or, with
+"offset", cuts away to another moment of the clip while the part's audio plays on), and "subs":
 [{"from", "text"}] replaces the whisper words with hand-checked subtitle phrases ("sub_size", default 80).
 
 Shot rules: no shot (or another piece of the same shot) used twice, at most max_per_clip uses of one source clip, never the same clip
@@ -91,6 +92,10 @@ class Picker:
             # drop the shots that look least like the character (other heroes, title cards, filler)
             c = self.sims(cfg["character"])
             self.ok &= c >= np.percentile(c, cfg.get("character_cut_percentile", 35))
+        for q in cfg.get("avoid", []):
+            # drop the shots that look most like what the edit should not show (the other team, say)
+            a = self.sims(q)
+            self.ok &= a <= np.percentile(a, 100 - cfg.get("avoid_cut_percent", 30))
 
     def sims(self, query):
         if query not in self.cache:
@@ -178,7 +183,8 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
         elif i < di:
             i = min(i + 4, di) if not any(i < h < min(i + 4, di) for h in hits) else min(h for h in hits if h > i)
         else:
-            i += 1
+            # after the drop: a cut every beat, or every N beats for held, sports-style shots
+            i += cfg.get("beats_per_cut", 1)
     picker = Picker(cfg, rel, rng)
     montage = cfg["montage_queries"]
     slots = []
@@ -187,7 +193,9 @@ def assemble(cfg, rel, beats, drop, words, variation, start, end):
         starts = [j for j in starts if j >= di]
         for d, at in dialogue_parts(cfg, start):
             for sh in d.get("shots") or [{"from": d["from"]}]:
-                slots.append({"at": round(at + sh["from"] - d["from"], 3), "clip": d["clip"], "from": sh["from"],
+                # "offset" (seconds into the part) places a cutaway from elsewhere in the clip
+                off = sh["offset"] if "offset" in sh else sh["from"] - d["from"]
+                slots.append({"at": round(at + off, 3), "clip": d["clip"], "from": sh["from"],
                               "fx": [], "note": "dialogue", **({"box": sh["box"]} if sh.get("box") else {})})
             picker.last = d["clip"]
     for j in starts:
